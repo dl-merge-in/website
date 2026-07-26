@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DL-Merge-In — Setup</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --border: rgba(0,0,0,0.09);
+  --border-md: rgba(0,0,0,0.15);
+  --text: #111827;
+  --text-muted: #6b7280;
+  --text-hint: #9ca3af;
+  --blue: #185FA5;
+  --blue-light: #E6F1FB;
+  --blue-mid: #B5D4F4;
+  --blue-dark: #0C447C;
+  --green: #1D9E75;
+  --green-light: #E1F5EE;
+  --green-mid: #9FE1CB;
+  --green-dark: #085041;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141414;
+    --surface: #1e1e1e;
+    --border: rgba(255,255,255,0.08);
+    --border-md: rgba(255,255,255,0.15);
+    --text: #f3f4f6;
+    --text-muted: #9ca3af;
+    --text-hint: #6b7280;
+    --blue-light: #0b2540;
+    --blue-mid: #163d68;
+    --blue-dark: #93c5fd;
+    --green-light: #062318;
+    --green-mid: #0d5c3a;
+    --green-dark: #6ee7b7;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Yu Gothic UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 580px;
+}
+
+.card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 2rem 2.25rem 1.75rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* ── ヘッダー ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background: var(--blue);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo svg { display: block; }
+
+.header-text { flex: 1; }
+.header-text h1 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text);
+}
+.header-text p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.lang-btn {
+  background: none;
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-md);
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.return-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--blue);
+  border-radius: var(--r-md);
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.return-link:hover { background: var(--blue); color: white; }
+.return-link:focus-visible { outline: 3px solid var(--blue-mid); outline-offset: 2px; }
+.lang-btn:hover { background: var(--border); }
+
+@media (max-width: 520px) {
+  body { padding: 1rem; }
+  .card { padding: 1.5rem 1.25rem; }
+  .header { flex-wrap: wrap; }
+  .return-link { order: 4; width: 100%; }
+}
+
+/* ── プログレス ── */
+.progress-track {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.p-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+.p-dot.done   { background: var(--green);  color: white; }
+.p-dot.active { background: var(--blue);   color: white; }
+.p-dot.future {
+  background: var(--bg);
+  color: var(--text-hint);
+  border: 1.5px solid var(--border-md);
+}
+
+.p-line {
+  flex: 1;
+  height: 1.5px;
+  background: var(--border-md);
+  transition: background 0.3s;
+}
+.p-line.done { background: var(--green); }
+
+.p-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+
+.p-labels span {
+  font-size: 11px;
+  flex: 1;
+  text-align: center;
+  color: var(--text-hint);
+  transition: color 0.3s;
+}
+.p-labels span.done   { color: var(--green); }
+.p-labels span.active { color: var(--blue);  font-weight: 500; }
+
+/* ── ステップコンテンツ ── */
+.step         { display: none; }
+.step.visible { display: block; }
+
+/* Step 2 内のサブステップ（①→② を順番に表示する） */
+.substep         { display: none; }
+.substep.visible { display: block; }
+
+/* 手順ボックス */
+.instr-box {
+  background: var(--blue-light);
+  border: 0.5px solid var(--blue-mid);
+  border-radius: var(--r-lg);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.instr-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.instr-num {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.instr-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--blue-dark);
+  line-height: 1.4;
+}
+
+.instr-body {
+  font-size: 13px;
+  color: var(--blue-dark);
+  line-height: 1.6;
+  margin-left: 34px;
+}
+
+/* Chrome デモ枠 */
+.chrome-demo {
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin: 0.8rem 0;
+}
+
+.chrome-topbar {
+  background: var(--bg);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.d-r { background: #ff5f57; }
+.d-y { background: #febc2e; }
+.d-g { background: #28c840; }
+
+.chrome-url {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 100px;
+  padding: 3px 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-left: 6px;
+  font-family: 'Consolas', monospace;
+}
+
+.chrome-body {
+  background: var(--surface);
+  padding: 12px 14px;
+}
+
+.ext-toprow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ext-page-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.dev-mode-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dev-label { font-size: 12px; color: var(--text-muted); }
+
+.toggle {
+  width: 36px;
+  height: 20px;
+  background: var(--blue);
+  border-radius: 10px;
+  position: relative;
+  flex-shrink: 0;
+  /* デベロッパーモードを「オフ→オン」する動きを繰り返し見せて操作を分かりやすくする */
+  animation: toggle-bg 2.6s ease-in-out infinite;
+}
+.toggle::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  right: 2px;
+  animation: toggle-knob 2.6s ease-in-out infinite;
+}
+
+/* オフ(灰・ノブ左) → オン(青・ノブ右) → オフ を繰り返す */
+@keyframes toggle-bg {
+  0%, 20%  { background: #9ca3af; }
+  45%, 80% { background: var(--blue); }
+  100%     { background: #9ca3af; }
+}
+@keyframes toggle-knob {
+  0%, 20%  { transform: translateX(-16px); }
+  45%, 80% { transform: translateX(0); }
+  100%     { transform: translateX(-16px); }
+}
+
+.load-btn-demo {
+  display: inline-block;
+  background: var(--blue-light);
+  color: var(--blue);
+  border: 0.5px solid var(--blue-mid);
+  border-radius: var(--r-md);
+  padding: 5px 13px;
+  font-size: 12px;
+  cursor: default;
+  /* 初心者がクリック対象を見つけやすいよう注意を引く */
+  animation: attention-pulse 2s ease-in-out infinite;
+}
+
+@keyframes attention-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(24, 95, 165, 0.0); }
+  50%      { box-shadow: 0 0 0 4px rgba(24, 95, 165, 0.18); }
+}
+
+.hidden { display: none !important; }
+
+/* Edge デモ（実画面に寄せる）。Chrome とレイアウトが大きく異なるため別物として用意し、
+   UA 判定で出し分ける。①=☰で開く左サイドパネル（開発者モードは最下部）、
+   ②=「開発者向けオプション」行の小さなアイコン（展開して読み込む）。 */
+.edge-demo {
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin: 0.8rem 0;
+  display: none;
+  background: var(--surface);
+}
+.edge-demo.show { display: block; }
+
+/* ── ① 左サイドパネル ── */
+.edge-sp-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 0.5px solid var(--border);
+}
+.edge-hamburger {
+  display: flex; flex-shrink: 0; color: var(--blue);
+  animation: attention-pulse 2s ease-in-out infinite; border-radius: 4px;
+}
+.edge-sp-title { font-size: 14px; font-weight: 500; color: var(--text); }
+.edge-sp-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 14px; font-size: 12px; color: var(--text-muted);
+}
+.edge-sp-item.active { background: var(--blue-light); color: var(--blue-dark); }
+.edge-sp-item svg { flex-shrink: 0; }
+.edge-sp-spacer { height: 30px; }
+.edge-sp-devmode {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px;
+  border-top: 0.5px solid var(--border);
+  background: var(--green-light);
+}
+.edge-sp-devmode-label { font-size: 12px; font-weight: 500; color: var(--green-dark); }
+
+/* ── ② 「開発者向けオプション」のアイコン行 ── */
+.edge-installed-title {
+  font-size: 13px; font-weight: 500; color: var(--text);
+  padding: 12px 14px 0;
+}
+.edge-devopts-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px 4px;
+}
+.edge-devopts-label { font-size: 12px; color: var(--text-muted); }
+.edge-devopts-icons { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.edge-icon {
+  width: 28px; height: 28px; border-radius: var(--r-md);
+  border: 0.5px solid var(--border-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); flex-shrink: 0;
+}
+.edge-icon.edge-icon-target {
+  border-color: var(--blue); color: var(--blue);
+  animation: attention-pulse 2s ease-in-out infinite;
+}
+.edge-callout {
+  text-align: right; padding: 0 14px 12px;
+  font-size: 12px; font-weight: 500; color: var(--blue);
+}
+
+/* アドレスバー入力デモ（chrome://extensions をタイプする様子を見せる） */
+.addr-demo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0.8rem 0;
+}
+.addr-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 0.5px solid var(--border-md);
+  border-radius: 100px;
+  padding: 8px 14px;
+  min-width: 0;
+  overflow: hidden;
+}
+.addr-bar svg { flex-shrink: 0; color: var(--text-hint); }
+.addr-typed {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--blue);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--blue);
+  width: 19ch;
+  /* 0→全文字をタイプ→保持→クリア を繰り返し、アドレスバー入力を視覚化 */
+  animation: addr-typing 4.2s steps(19) infinite, addr-caret 0.7s step-end infinite;
+}
+@keyframes addr-typing {
+  0%   { width: 0; }
+  45%  { width: 19ch; }
+  88%  { width: 19ch; }
+  100% { width: 0; }
+}
+@keyframes addr-caret {
+  50% { border-color: transparent; }
+}
+.addr-copy { margin: 0; flex-shrink: 0; }
+
+/* パス表示 */
+.path-box {
+  background: var(--bg);
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-md);
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0.75rem 0;
+}
+
+.path-icon { flex-shrink: 0; color: var(--text-hint); }
+
+.path-text {
+  font-size: 12px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  color: var(--text-muted);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-md);
+  padding: 4px 11px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-family: inherit;
+}
+.copy-btn:hover { background: var(--border); }
+.copy-btn.copied {
+  background: var(--green-light);
+  color: var(--green);
+  border-color: var(--green-mid);
+}
+
+/* サーバー起動デモ */
+.server-demo {
+  background: var(--bg);
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin: 0.8rem 0;
+}
+.server-demo-bar {
+  padding: 8px 12px;
+  background: var(--surface);
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.server-dot-red { width: 9px; height: 9px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
+.server-status-text { color: var(--text-muted); flex: 1; }
+.server-start-btn-demo {
+  background: #ea580c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: default;
+}
+
+/* 拡張ロード待機ステータス */
+.wait-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 1.1rem 0 0.25rem;
+  padding: 10px 14px;
+  background: var(--green-light);
+  border: 0.5px solid var(--green-mid);
+  border-radius: var(--r-lg);
+  font-size: 13px;
+  color: var(--green-dark);
+  transition: background 0.2s, color 0.2s;
+}
+.wait-status.detected {
+  font-weight: 500;
+}
+
+.wait-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--green-mid);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: wait-spin 0.8s linear infinite;
+}
+.wait-status.detected .wait-spinner { display: none; }
+
+@keyframes wait-spin { to { transform: rotate(360deg); } }
+
+/* 完了ステップ */
+.success-area {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--green-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.success-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.success-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.close-note {
+  display: none;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-hint);
+}
+
+/* フッターボタン */
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 0.5px solid var(--border);
+}
+
+.btn {
+  padding: 9px 22px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-weight: 400;
+  transition: opacity 0.15s;
+  line-height: 1;
+}
+.btn:hover { opacity: 0.82; }
+.btn:active { opacity: 0.7; }
+
+.btn-primary  { background: var(--blue);  color: white; font-weight: 500; }
+.btn-success  { background: var(--green); color: white; font-weight: 500; }
+.btn-ghost    { background: none; border: 0.5px solid var(--border-md); color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+
+    <!-- ヘッダー -->
+    <div class="header">
+      <div class="logo">
+        <svg width="22" height="22" fill="none" stroke="white" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M12 3v13M12 16l-4-4m4 4l4-4M3 19h18"/>
+        </svg>
+      </div>
+      <div class="header-text">
+        <h1>DL-Merge-In</h1>
+        <p id="headerSub"></p>
+      </div>
+      <a class="return-link" href="../" aria-label="DL-Merge-Inの紹介ページに戻る">← 紹介ページへ戻る</a>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()"></button>
+    </div>
+
+    <!-- プログレスバー -->
+    <div class="progress-track">
+      <div class="p-dot done" id="dot1">
+        <svg width="13" height="13" fill="none" stroke="white" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <div class="p-line done" id="line1"></div>
+      <div class="p-dot active" id="dot2">2</div>
+      <div class="p-line" id="line2"></div>
+      <div class="p-dot future" id="dot3">3</div>
+    </div>
+    <div class="p-labels">
+      <span class="done"   id="label1"></span>
+      <span class="active" id="label2"></span>
+      <span                id="label3"></span>
+    </div>
+
+    <!-- ── Step 2: 拡張機能を読み込む（サブステップ ①→② を順番に表示）── -->
+    <div class="step visible" id="step2">
+
+      <!-- ── Sub-step ①: chrome://extensions を開いてデベロッパーモードをオンにする ── -->
+      <div class="substep visible" id="sub1">
+        <div class="instr-box">
+          <div class="instr-header">
+            <div class="instr-num">1</div>
+            <div class="instr-title" id="s2t1"></div>
+          </div>
+          <div class="instr-body" id="s2b1"></div>
+        </div>
+
+        <!-- アドレスバー入力デモ: chrome://extensions をタイプ + コピー -->
+        <div class="addr-demo">
+          <div class="addr-bar">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
+            </svg>
+            <span class="addr-typed">chrome://extensions</span>
+          </div>
+          <button class="copy-btn addr-copy" id="urlCopyBtn" onclick="copyExtUrl()">
+            <svg id="urlCopyIcon" width="13" height="13" fill="none" stroke="currentColor"
+                 stroke-width="2" viewBox="0 0 24 24">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            <span id="addrCopyLabel"></span>
+          </button>
+        </div>
+
+        <!-- Chrome デモ: デベロッパーモードのトグル（右上）。Chrome 検出時のみ表示 -->
+        <div class="chrome-demo" id="chromeDemo1">
+          <div class="chrome-topbar">
+            <div class="dot d-r"></div>
+            <div class="dot d-y"></div>
+            <div class="dot d-g"></div>
+            <span class="chrome-url">chrome://extensions</span>
+          </div>
+          <div class="chrome-body">
+            <div class="ext-toprow">
+              <span class="ext-page-title" id="extPageTitle"></span>
+              <div class="dev-mode-row">
+                <span class="dev-label" id="devModeLabel"></span>
+                <div class="toggle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edge デモ: ☰で開く左サイドパネル。開発者モードは「最下部」にある（実画面に準拠）。 -->
+        <div class="edge-demo" id="edgeDemo1">
+          <div class="edge-sp-header">
+            <span class="edge-hamburger" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </span>
+            <span class="edge-sp-title" id="edgeSpTitle"></span>
+          </div>
+          <div class="edge-sp-item active">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M4 7h4V4h8v3h4v13H4zM9 12h6"/>
+            </svg>
+            <span id="edgeMyExt"></span>
+          </div>
+          <div class="edge-sp-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M8 14h8"/>
+            </svg>
+            <span id="edgeShortcuts"></span>
+          </div>
+          <div class="edge-sp-spacer"></div>
+          <div class="edge-sp-devmode">
+            <span class="edge-sp-devmode-label" id="edgeDevModeLabel"></span>
+            <div class="toggle"></div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <button class="btn btn-primary" onclick="showSub(2)" id="devModeDoneBtn"></button>
+        </div>
+      </div>
+
+      <!-- ── Sub-step ②: 拡張機能を読み込む ── -->
+      <div class="substep" id="sub2">
+        <div class="instr-box">
+          <div class="instr-header">
+            <div class="instr-num">2</div>
+            <div class="instr-title" id="s2t2"></div>
+          </div>
+          <div class="instr-body" id="s2b2"></div>
+        </div>
+
+        <!-- Chrome デモ: 「パッケージ化されていない拡張機能を読み込む」ボタン。Chrome 検出時のみ表示 -->
+        <div class="chrome-demo" id="chromeDemo2">
+          <div class="chrome-topbar">
+            <div class="dot d-r"></div>
+            <div class="dot d-y"></div>
+            <div class="dot d-g"></div>
+            <span class="chrome-url">chrome://extensions</span>
+          </div>
+          <div class="chrome-body">
+            <span class="load-btn-demo" id="loadBtnDemo"></span>
+          </div>
+        </div>
+
+        <!-- Edge デモ: 「開発者向けオプション」行の小さなアイコン群。左端の「展開して読み込む」を強調。 -->
+        <div class="edge-demo" id="edgeDemo2">
+          <div class="edge-installed-title" id="edgeInstalledTitle"></div>
+          <div class="edge-devopts-row">
+            <span class="edge-devopts-label" id="edgeDevOptsLabel"></span>
+            <div class="edge-devopts-icons">
+              <span class="edge-icon edge-icon-target" aria-label="展開して読み込む">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/>
+                </svg>
+              </span>
+              <span class="edge-icon" aria-hidden="true">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
+                </svg>
+              </span>
+              <span class="edge-icon" aria-hidden="true">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M4 4v5h5M20 20v-5h-5"/><path d="M5 14a7 7 0 0012 3M19 10A7 7 0 007 7"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="edge-callout" id="edgeUnpackCallout"></div>
+        </div>
+
+        <!-- パス表示 -->
+        <div class="path-box">
+          <svg class="path-icon" width="15" height="15" fill="none" stroke="currentColor"
+               stroke-width="1.6" viewBox="0 0 24 24">
+            <path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
+          </svg>
+          <span class="path-text" id="extPath"></span>
+          <button class="copy-btn" id="copyBtn" onclick="copyPath()">
+            <svg id="copyIcon" width="13" height="13" fill="none" stroke="currentColor"
+                 stroke-width="2" viewBox="0 0 24 24">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            <span id="copyLabel"></span>
+          </button>
+        </div>
+
+        <!-- 拡張ロード成功の自動検出待ち（検出するとサーバーも自動起動し、ガイドが自動で完了へ進む） -->
+        <div class="wait-status" id="waitStatus">
+          <span class="wait-spinner" id="waitSpinner"></span>
+          <span id="waitStatusText"></span>
+        </div>
+
+        <div class="footer" style="justify-content:space-between;">
+          <button class="btn btn-ghost" onclick="showSub(1)" id="backBtn"></button>
+          <button class="btn btn-primary" onclick="goToStep3()" id="nextBtn"></button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Step 3: セットアップ完了 ── -->
+    <div class="step" id="step3">
+      <div class="success-area">
+        <div class="success-icon">
+          <svg width="28" height="28" fill="none" stroke="#1D9E75" stroke-width="2.8"
+               stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+        </div>
+        <div class="success-title" id="doneTitle"></div>
+        <p class="success-sub" id="doneSub"></p>
+      </div>
+      <div class="footer" style="justify-content:center; border-top:none; margin-top:2rem; flex-direction:column; align-items:center; gap:6px;">
+        <button class="btn btn-success" onclick="tryClose()" id="closeBtn"></button>
+        <p class="close-note" id="closeNote"></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+
+  // ── テキスト辞書 ──────────────────────────────────────────
+  var TEXT = {
+    ja: {
+      headerSub:        '拡張機能のセットアップ',
+      langBtn:          'EN',
+      label1:           'インストール完了',
+      label2:           '拡張機能を読み込む',
+      label3:           'セットアップ完了',
+      s2t1:             'Chrome / Edge で chrome://extensions を開き「デベロッパーモード」をオンにする',
+      s2b1Chrome:       'ブラウザ上部のアドレスバーに  chrome://extensions  と入力して Enter キーを押します（右の「コピー」で貼り付けできます）。開いたページ右上の「デベロッパーモード」をオンにし、下の「オンにした → 次へ」を押してください。',
+      s2b1Edge:         'ブラウザ上部のアドレスバーに  chrome://extensions  と入力して Enter キーを押します（右の「コピー」で貼り付けできます）。開いたページ左上の「☰」メニューを開き、サイドパネル下部の「開発者モード」をオンにしてから、下の「オンにした → 次へ」を押してください。',
+      addrCopyLabel:    'コピー',
+      extPageTitle:     '拡張機能',
+      devModeLabel:     'デベロッパーモード',
+      loadBtnDemo:      'パッケージ化されていない拡張機能を読み込む',
+      s2t2Chrome:       '「パッケージ化されていない拡張機能を読み込む」をクリックし、下記のフォルダを指定する',
+      s2b2Chrome:       '下記のフォルダのパスをコピーし、ダイアログのアドレスバーに貼り付けて「フォルダーの選択」をクリックしてください。読み込むとサーバーも自動で起動します。（「拡張機能のパッケージ化」など別の小さなボタンが並ぶ場合がありますが、そちらは使いません。）',
+      s2t2Edge:         '「開発者向けオプション」の右にある小さなアイコンのうち、左端の「展開して読み込む」をクリックし、下記のフォルダを指定する',
+      s2b2Edge:         'Edge では「読み込む」はボタンではなく小さなアイコンです。下の図の左端のアイコン（展開して読み込む）をクリックし、下記のフォルダのパスをコピーして開いたダイアログのアドレスバーに貼り付け、「フォルダーの選択」をクリックしてください。読み込むとサーバーも自動で起動します。（隣のフォルダ型「拡張機能のパッケージ化」アイコンは使いません。）',
+      edgeSpTitle:      '拡張機能',
+      edgeMyExt:        '自分の拡張機能',
+      edgeShortcuts:    'キーボード ショートカット',
+      edgeDevMode:      '開発者モード',
+      edgeInstalledTitle: 'インストール済の拡張機能',
+      edgeDevOptions:   '開発者向けオプション',
+      edgeUnpackCallout: '↑ 左端のアイコン =「展開して読み込む」',
+      copyLabel:        'コピー',
+      copiedLabel:      'コピー済み',
+      devModeDoneBtn:   'オンにした → 次へ',
+      backBtn:          '← 戻る',
+      waitingExtension: '拡張の読み込みを待っています… 読み込まれると自動で次に進みます',
+      waitingDetected:  '✓ 拡張を検出しました',
+      nextBtn:          '読み込んだ（手動で次へ）→',
+      doneTitle:        'セットアップ完了！',
+      doneSub:          'DL-Merge-In の準備ができました。\n動画のあるページを開き、ブラウザツールバーのアイコンをクリックして使い始めてください。',
+      closeBtn:         '閉じる',
+      closeNote:        'このタブを手動で閉じてください。',
+      pathFallback:     '（パスを取得できませんでした。インストール先 \\extension フォルダを手動で指定してください）',
+    },
+    en: {
+      headerSub:        'Extension Setup',
+      langBtn:          'JA',
+      label1:           'Installed',
+      label2:           'Load Extension',
+      label3:           'Done',
+      s2t1:             'Open chrome://extensions in Chrome or Edge and enable "Developer mode"',
+      s2b1Chrome:       'Type  chrome://extensions  into your browser\'s address bar and press Enter (use "Copy" on the right to paste it). On the page that opens, turn on the "Developer mode" toggle at the top-right, then click "It\'s on → Next" below.',
+      s2b1Edge:         'Type  chrome://extensions  into your browser\'s address bar and press Enter (use "Copy" on the right to paste it). On the page that opens, click the ☰ menu icon at the top-left, then turn on the "Developer mode" toggle near the bottom of the side panel, then click "It\'s on → Next" below.',
+      addrCopyLabel:    'Copy',
+      extPageTitle:     'Extensions',
+      devModeLabel:     'Developer mode',
+      loadBtnDemo:      'Load unpacked',
+      s2t2Chrome:       'Click "Load unpacked" and select the folder below',
+      s2b2Chrome:       'Copy the folder path below, paste it into the address bar of the folder picker dialog, and click "Select Folder". Loading also starts the server automatically. (You may also see a smaller "Pack extension" button next to it — you don\'t need that one.)',
+      s2t2Edge:         'In the "Developer options" row, click the small left-most icon ("Load unpacked"), then select the folder below',
+      s2b2Edge:         'In Edge, "Load unpacked" is a small icon, not a button. Click the left-most icon shown below, then copy the folder path below and paste it into the folder picker\'s address bar, then click "Select Folder". Loading also starts the server automatically. (The folder-shaped "Pack extension" icon next to it is not the one you need.)',
+      edgeSpTitle:      'Extensions',
+      edgeMyExt:        'My extensions',
+      edgeShortcuts:    'Keyboard shortcuts',
+      edgeDevMode:      'Developer mode',
+      edgeInstalledTitle: 'Installed extensions',
+      edgeDevOptions:   'Developer options',
+      edgeUnpackCallout: '↑ The left-most icon = "Load unpacked"',
+      copyLabel:        'Copy',
+      copiedLabel:      'Copied',
+      devModeDoneBtn:   "It's on → Next",
+      backBtn:          '← Back',
+      waitingExtension: 'Waiting for the extension to load… this page advances automatically',
+      waitingDetected:  '✓ Extension detected',
+      nextBtn:          'I loaded it (advance manually) →',
+      doneTitle:        'Setup Complete!',
+      doneSub:          'DL-Merge-In is ready.\nOpen any page with video and click the extension icon in your browser toolbar.',
+      closeBtn:         'Close',
+      closeNote:        'Please close this tab manually.',
+      pathFallback:     '(Could not detect path. Manually select the \\extension folder in your install directory)',
+    }
+  };
+
+  // ── 言語判定 ──────────────────────────────────────────────
+  // setup.iss passes the language chosen for the extension as ?lang=<BCP47>.
+  // The guide itself currently has complete Japanese and English copy; other
+  // supported extension languages deliberately use the English guide instead
+  // of silently ignoring the installer choice or showing mixed Japanese text.
+  var requestedLang = new URLSearchParams(window.location.search).get('lang');
+  var lang = TEXT[requestedLang] ? requestedLang : (navigator.language.startsWith('ja') ? 'ja' : 'en');
+
+  // ── ブラウザ判定 ──────────────────────────────────────────
+  // Edge の UA には "Edg/" が含まれる（Chromium 系で "Chrome/" も同時に含むため
+  // "Edg/" の有無で判定する必要がある。Chrome 単体には "Edg/" は含まれない）。
+  var isEdge = /Edg\//.test(navigator.userAgent);
+
+  // 拡張ロード検出フラグ（ポーリングが立てる）
+  var setupDone = false;
+
+  // ブラウザ依存の表示を切り替える。Edge は「☰メニュー→サイドパネル最下部の開発者モード」
+  // と「開発者向けオプション行の小さなアイコン（展開して読み込む）」という Chrome とは別の
+  // 操作系のため、①②のデモUI（chromeDemo*/edgeDemo*）と手順文（s2b1/s2t2/s2b2）を出し分ける。
+  function applyBrowserUI() {
+    var t = TEXT[lang];
+    var set = function (id, val) { var el = document.getElementById(id); if (el) el.textContent = val; };
+
+    // chrome-demo は既定で常時表示（display:none を持たない）ため hidden で隠す。
+    // edge-demo は既定で display:none のため show で表示する。
+    ['chromeDemo1', 'chromeDemo2'].forEach(function (id) {
+      var el = document.getElementById(id); if (el) el.classList.toggle('hidden', isEdge);
+    });
+    ['edgeDemo1', 'edgeDemo2'].forEach(function (id) {
+      var el = document.getElementById(id); if (el) el.classList.toggle('show', isEdge);
+    });
+
+    // Edge デモ内ラベルのうち、要素IDが TEXT キーと一致しないものを明示設定
+    // （edgeSpTitle/edgeMyExt/edgeShortcuts/edgeInstalledTitle/edgeUnpackCallout は
+    //   要素IDが TEXT キーと一致するため applyLang の汎用ループが設定する）。
+    set('edgeDevModeLabel', t.edgeDevMode);
+    set('edgeDevOptsLabel', t.edgeDevOptions);
+
+    // 手順文（①デベロッパーモード / ②読み込む）をブラウザ別に出し分け
+    set('s2b1', isEdge ? t.s2b1Edge : t.s2b1Chrome);
+    set('s2t2', isEdge ? t.s2t2Edge : t.s2t2Chrome);
+    set('s2b2', isEdge ? t.s2b2Edge : t.s2b2Chrome);
+  }
+
+  function applyLang() {
+    var t = TEXT[lang];
+    var ids = Object.keys(t);
+    for (var i = 0; i < ids.length; i++) {
+      var el = document.getElementById(ids[i]);
+      if (el) el.textContent = t[ids[i]];
+    }
+    document.documentElement.lang = lang;
+
+    // パス表示は別途処理
+    var pathEl = document.getElementById('extPath');
+    if (pathEl && !pathEl._hasRealPath) {
+      pathEl.textContent = t.pathFallback;
+    }
+
+    // 待機ステータスは検出状態に応じて出し分け（ポーリングが上書きするため未検出時のみ）
+    var waitEl = document.getElementById('waitStatusText');
+    if (waitEl) waitEl.textContent = setupDone ? t.waitingDetected : t.waitingExtension;
+
+    applyBrowserUI();
+  }
+
+  window.toggleLang = function () {
+    lang = lang === 'ja' ? 'en' : 'ja';
+    applyLang();
+  };
+
+  // ── 拡張フォルダパス検出 ──────────────────────────────────
+  // file:///C:/Users/.../DL-Merge-In/setup-guide/index.html
+  // → C:\Users\...\DL-Merge-In\extension
+  function detectExtPath() {
+    try {
+      var href = decodeURIComponent(window.location.href);
+      var p = href.replace(/^file:\/\/\//, '').replace(/\//g, '\\');
+      p = p.replace(/\\setup-guide\\index\.html(\?.*)?$/, '');
+      return p + '\\extension';
+    } catch (e) {
+      return null;
+    }
+  }
+
+  var extPath = detectExtPath();
+  var pathEl  = document.getElementById('extPath');
+
+  if (extPath) {
+    pathEl.textContent = extPath;
+    pathEl._hasRealPath = true;
+    // ページロード時の自動コピーは行わない（ユーザー操作なしの clipboard-write は
+    // file:// ページで Chrome が「クリップボードへのアクセス許可」ダイアログを出し、
+    // 煩わしい体験になるため。setup.iss 側もインストール完了時の自動コピーは行わない方針
+    // （ユーザー操作のないクリップボード書き込みは廃止）。
+    // ユーザーが明示的に「コピー」ボタンを押したときだけ tryClipboard() を呼ぶ（copyPath() 参照）。
+  }
+
+  // ── クリップボード ────────────────────────────────────────
+  function tryClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).catch(function () { clipFallback(text); });
+    } else {
+      clipFallback(text);
+    }
+  }
+
+  function clipFallback(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  window.copyPath = function () {
+    var path  = document.getElementById('extPath').textContent;
+    var btn   = document.getElementById('copyBtn');
+    var label = document.getElementById('copyLabel');
+    var icon  = document.getElementById('copyIcon');
+    var t     = TEXT[lang];
+
+    tryClipboard(path);
+
+    btn.classList.add('copied');
+    icon.innerHTML = '<path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>';
+    label.textContent = t.copiedLabel;
+
+    setTimeout(function () {
+      btn.classList.remove('copied');
+      icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>';
+      label.textContent = t.copyLabel;
+    }, 2200);
+  };
+
+  // chrome://extensions をクリップボードへコピー（アドレスバーに貼り付けてもらう）
+  window.copyExtUrl = function () {
+    var btn   = document.getElementById('urlCopyBtn');
+    var label = document.getElementById('addrCopyLabel');
+    var icon  = document.getElementById('urlCopyIcon');
+    var t     = TEXT[lang];
+
+    tryClipboard('chrome://extensions');
+
+    btn.classList.add('copied');
+    icon.innerHTML = '<path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>';
+    label.textContent = t.copiedLabel;
+
+    setTimeout(function () {
+      btn.classList.remove('copied');
+      icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>';
+      label.textContent = t.addrCopyLabel;
+    }, 2200);
+  };
+
+  // ── サブステップ遷移（① デベロッパーモード → ② 読み込む を順番に表示）──
+  window.showSub = function (n) {
+    var s1 = document.getElementById('sub1');
+    var s2 = document.getElementById('sub2');
+    if (s1) s1.classList.toggle('visible', n === 1);
+    if (s2) s2.classList.toggle('visible', n === 2);
+    // カード内の見え方が変わるため先頭へスクロール
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+  };
+
+  // ── ステップ遷移 ──────────────────────────────────────────
+  window.goToStep3 = function () {
+    document.getElementById('step2').classList.remove('visible');
+    document.getElementById('step3').classList.add('visible');
+
+    var dot2 = document.getElementById('dot2');
+    dot2.className = 'p-dot done';
+    dot2.innerHTML = '<svg width="13" height="13" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>';
+
+    document.getElementById('dot3').className   = 'p-dot active';
+    document.getElementById('dot3').textContent = '3';
+    document.getElementById('line2').classList.add('done');
+
+    document.getElementById('label2').className = 'done';
+    document.getElementById('label3').className = 'active';
+  };
+
+  // ── 閉じるボタン ──────────────────────────────────────────
+  // window.close() は file:// + 一部ブラウザでブロックされる場合があるため、
+  // 300ms 後にタブが閉じられていなければフォールバックメッセージを表示する。
+  window.tryClose = function () {
+    window.close();
+    setTimeout(function () {
+      // まだこのページが見えているならフォールバックを表示
+      try {
+        document.getElementById('closeNote').style.display = 'block';
+      } catch (e) {}
+    }, 300);
+  };
+
+  // ── 拡張ロード成功の自動検出（ローカルサーバーのセットアップ状態をポーリング）──
+  // 拡張がロードされ background がサーバーを起動 → サーバーが extensionSeen=true に。
+  // サーバーポートは 47280–47289 で自動割当のため、判明するまで全ポートを軽く走査する。
+  // サーバーの CORS は file://（Origin: "null"）からの GET を許可済み（server.ts）。
+  var SETUP_PORTS = [];
+  for (var pp = 47280; pp <= 47289; pp++) SETUP_PORTS.push(pp);
+  var knownPort = null;
+  var setupTimer = null;
+
+  function onExtensionDetected() {
+    if (setupDone) return;
+    setupDone = true;
+    if (setupTimer) { clearInterval(setupTimer); setupTimer = null; }
+
+    var box = document.getElementById('waitStatus');
+    var txt = document.getElementById('waitStatusText');
+    if (box) box.classList.add('detected');
+    if (txt) txt.textContent = TEXT[lang].waitingDetected;
+
+    // 検出表示を一瞬見せてから完了ステップへ自動遷移
+    setTimeout(function () {
+      if (typeof window.goToStep3 === 'function') window.goToStep3();
+    }, 900);
+  }
+
+  function checkSetupOnce() {
+    if (setupDone) return;
+    var ports = knownPort ? [knownPort] : SETUP_PORTS;
+    ports.forEach(function (port) {
+      fetch('http://127.0.0.1:' + port + '/api/setup/status', { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) {
+          if (!j) return;
+          knownPort = port; // 以降はこのポートだけ見る
+          if (j.extensionSeen) onExtensionDetected();
+        })
+        .catch(function () { /* サーバー未起動など。次回ポーリングを待つ */ });
+    });
+  }
+
+  setupTimer = setInterval(checkSetupOnce, 2000);
+  checkSetupOnce();
+
+  // ── 初期テキスト適用 ──────────────────────────────────────
+  applyLang();
+
+}());
+</script>
+</body>
+</html>
