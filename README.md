@@ -17,6 +17,8 @@
 ├─ script.js           # 小さな画面効果
 ├─ assets/             # OGP画像と匿名化済みの画面画像
 ├─ guide/index.html    # ブラウザ拡張の手動読み込みを含むセットアップガイド
+├─ legal/index.html    # 利用条件・免責・プライバシー
+├─ supported-sites/    # 対応サービスの例と注意事項
 └─ CNAME               # GitHub Pagesの独自ドメイン設定
 ```
 
@@ -28,6 +30,8 @@
 4. GitHub Pagesのビルド完了後、公開サイトで表示、リンク、画像を確認します。
 
 `CNAME` には `www.dlmergein.com` が設定されています。独自ドメインの接続を維持するため、通常のLP更新ではこのファイルを削除・変更しないでください。
+
+対応サービス名は、LPの主画面ではなく `supported-sites/` に平文で掲載します。第三者サービスのロゴ、UI、アカウント情報、動画タイトルを画像に含めず、画面画像は中立なモックとして作成・確認してください。
 
 ### ローカル確認
 
@@ -51,6 +55,10 @@ py -m http.server 8000
 ## 配布との関係
 
 Windows向けインストーラーとSHA-256は、このリポジトリではなく [DL-Merge-In Releases](https://github.com/dl-merge-in/DL-Merge-In/releases) に公開します。リリースを公開したら、LPのダウンロード導線を該当するRelease URLへ更新してください。
+
+## 法的な案内
+
+[利用条件・免責・プライバシー](https://www.dlmergein.com/legal/) と [対応サービスの例](https://www.dlmergein.com/supported-sites/) は、LPの公開内容と矛盾しないよう同時に更新してください。前者には権利・規約・DRM・プライバシーの案内、後者には平文のサービス例と非提携表記を置きます。
 
 ## 問い合わせ・外部貢献
 
