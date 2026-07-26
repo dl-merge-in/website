@@ -1,0 +1,70 @@
+name: 不具合報告
+description: 再現可能な不具合を報告します。
+title: "[不具合]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ご報告ありがとうございます。個人情報、ログイン情報、Cookie、アクセストークン、非公開URLは投稿しないでください。
+
+        DRMで保護されたコンテンツはDL-Merge-Inの対象外です。DRMの回避や保護コンテンツの取得に関する依頼は受け付けません。
+  - type: input
+    id: version
+    attributes:
+      label: DL-Merge-Inのバージョン
+      description: 例: 0.0.3
+      placeholder: 0.0.3
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: 利用ブラウザ
+      options:
+        - Google Chrome
+        - Microsoft Edge
+        - その他
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windowsのバージョン
+      description: 例: Windows 11 24H2
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      description: 公開してよい範囲で、発生までの操作を番号付きで記載してください。
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待した動作
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の動作・エラーメッセージ
+      description: スクリーンショットやログを添える場合は、個人情報とアカウント情報を必ず伏せてください。
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 確認事項
+      options:
+        - label: 最新版でも再現することを確認しました。
+          required: true
+        - label: 個人情報、ログイン情報、Cookie、アクセストークン、非公開URLを含めていません。
+          required: true
+        - label: DRMで保護されたコンテンツに関する報告ではありません。
+          required: true

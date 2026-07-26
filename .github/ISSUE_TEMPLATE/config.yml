@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: セットアップガイド
+    url: https://www.dlmergein.com/guide/
+    about: インストールや拡張機能の手動読み込みの手順を確認してください。
+  - name: よくある質問
+    url: https://www.dlmergein.com/#faq
+    about: 対応環境、対応サイト、DRM対象外の範囲を確認してください。

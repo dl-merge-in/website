@@ -52,6 +52,14 @@ py -m http.server 8000
 
 Windows向けインストーラーとSHA-256は、このリポジトリではなく [DL-Merge-In Releases](https://github.com/dl-merge-in/DL-Merge-In/releases) に公開します。リリースを公開したら、LPのダウンロード導線を該当するRelease URLへ更新してください。
 
+## 問い合わせ・外部貢献
+
+不具合報告と機能要望は、このリポジトリの [Issues](https://github.com/dl-merge-in/website/issues) から送信してください。テンプレートの注意に従い、個人情報、ログイン情報、Cookie、アクセストークン、非公開URLを投稿しないでください。
+
+一般的な使い方の質問は、まず [セットアップガイド](https://www.dlmergein.com/guide/) と [よくある質問](https://www.dlmergein.com/#faq) を確認してください。個別サポート、DRMの回避、著作権侵害や利用規約違反につながる依頼には対応しません。
+
+このリポジトリは公開サイトの配布・運用を目的としており、外部からのPull Requestは受け付けていません。提案はIssueでお知らせください。Discussionsは現時点では有効にしていません。
+
 ## License
 
 Copyright (c) 2026 DL-Merge-In. All rights reserved.
