@@ -648,6 +648,10 @@ body {
 .btn-primary  { background: var(--blue);  color: white; font-weight: 500; }
 .btn-success  { background: var(--green); color: white; font-weight: 500; }
 .btn-ghost    { background: none; border: 0.5px solid var(--border-md); color: var(--text-muted); }
+.guide-video { margin: 0 0 1.45rem; padding: 1rem; border: 0.5px solid var(--border-md); border-radius: 12px; background: var(--bg-subtle); }
+.guide-video h2 { margin: 0; font-size: .98rem; color: var(--text); }
+.guide-video p { margin: .28rem 0 .75rem; font-size: .79rem; color: var(--text-muted); line-height: 1.65; }
+.guide-video video { display: block; width: 100%; border-radius: 8px; background: #151515; }
 </style>
 </head>
 <body>
@@ -666,9 +670,18 @@ body {
         <h1>DL-Merge-In</h1>
         <p id="headerSub"></p>
       </div>
-      <a class="return-link" href="../" aria-label="DL-Merge-Inの紹介ページに戻る">← 紹介ページへ戻る</a>
+      <a class="return-link" id="returnLink" href="../" aria-label="DL-Merge-Inの紹介ページに戻る">← 紹介ページへ戻る</a>
       <button class="lang-btn" id="langBtn" onclick="toggleLang()"></button>
     </div>
+
+    <section class="guide-video" aria-labelledby="videoTitle">
+      <h2 id="videoTitle"></h2>
+      <p id="videoLead"></p>
+      <video controls preload="metadata">
+        <source src="../assets/videos/DL-Merge-In-install-guide-ja.mp4" type="video/mp4" />
+        <a href="../assets/videos/DL-Merge-In-install-guide-ja.mp4">DL-Merge-In-install-guide-ja.mp4</a>
+      </video>
+    </section>
 
     <!-- プログレスバー -->
     <div class="progress-track">
@@ -803,7 +816,7 @@ body {
           <div class="edge-devopts-row">
             <span class="edge-devopts-label" id="edgeDevOptsLabel"></span>
             <div class="edge-devopts-icons">
-              <span class="edge-icon edge-icon-target" aria-label="展開して読み込む">
+              <span class="edge-icon edge-icon-target" id="edgeUnpackIcon" aria-label="展開して読み込む">
                 <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                   <path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/>
                 </svg>
@@ -875,6 +888,7 @@ body {
   </div>
 </div>
 
+<script src="../guide-translations.js?v=20260823-2"></script>
 <script>
 (function () {
 
@@ -882,6 +896,10 @@ body {
   var TEXT = {
     ja: {
       headerSub:        '拡張機能のセットアップ',
+      videoTitle:       '動画でセットアップ手順を見る',
+      videoLead:        'Chrome / Edge で拡張機能を手動で読み込む手順を、日本語の動画で確認できます。',
+      returnLink:       '← 紹介ページへ戻る',
+      returnAria:       'DL-Merge-Inの紹介ページに戻る',
       langBtn:          'EN',
       label1:           'インストール完了',
       label2:           '拡張機能を読み込む',
@@ -904,6 +922,7 @@ body {
       edgeInstalledTitle: 'インストール済の拡張機能',
       edgeDevOptions:   '開発者向けオプション',
       edgeUnpackCallout: '↑ 左端のアイコン =「展開して読み込む」',
+      edgeUnpackAria:    '展開して読み込む',
       copyLabel:        'コピー',
       copiedLabel:      'コピー済み',
       devModeDoneBtn:   'オンにした → 次へ',
@@ -919,6 +938,10 @@ body {
     },
     en: {
       headerSub:        'Extension Setup',
+      videoTitle:       'Watch the setup steps',
+      videoLead:        'This Japanese video shows how to load the extension manually in Chrome or Edge.',
+      returnLink:       '← Back to the product page',
+      returnAria:       'Back to the DL-Merge-In product page',
       langBtn:          'JA',
       label1:           'Installed',
       label2:           'Load Extension',
@@ -941,6 +964,7 @@ body {
       edgeInstalledTitle: 'Installed extensions',
       edgeDevOptions:   'Developer options',
       edgeUnpackCallout: '↑ The left-most icon = "Load unpacked"',
+      edgeUnpackAria:    'Load unpacked',
       copyLabel:        'Copy',
       copiedLabel:      'Copied',
       devModeDoneBtn:   "It's on → Next",
@@ -956,13 +980,28 @@ body {
     }
   };
 
+  Object.entries(window.DLMERGEIN_GUIDE_TRANSLATIONS || {}).forEach(function (entry) {
+    TEXT[entry[0]] = entry[1];
+  });
+  TEXT.ja.pageTitle = 'DL-Merge-In — セットアップ';
+  TEXT.en.pageTitle = 'DL-Merge-In — Setup';
+
   // ── 言語判定 ──────────────────────────────────────────────
   // setup.iss passes the language chosen for the extension as ?lang=<BCP47>.
   // The guide itself currently has complete Japanese and English copy; other
   // supported extension languages deliberately use the English guide instead
   // of silently ignoring the installer choice or showing mixed Japanese text.
+  function normalizeGuideLocale(value) {
+    var locale = String(value || '').trim().replaceAll('_', '-').toLowerCase();
+    if (locale.startsWith('zh')) return /(^zh-(tw|hk|mo|hant)$)|(^zh-hant)/.test(locale) ? 'zh-TW' : 'zh-CN';
+    var language = locale.split('-')[0];
+    return ({ en: 'en', ja: 'ja', es: 'es', pt: 'pt-BR', de: 'de', fr: 'fr', it: 'it', id: 'id', ko: 'ko' })[language] || 'en';
+  }
   var requestedLang = new URLSearchParams(window.location.search).get('lang');
-  var lang = TEXT[requestedLang] ? requestedLang : (navigator.language.startsWith('ja') ? 'ja' : 'en');
+  var primaryLang = requestedLang ? normalizeGuideLocale(requestedLang) : normalizeGuideLocale(navigator.language);
+  var lang = TEXT[primaryLang] ? primaryLang : 'en';
+  primaryLang = lang;
+  var alternateLang = primaryLang === 'ja' ? 'en' : 'ja';
 
   // ── ブラウザ判定 ──────────────────────────────────────────
   // Edge の UA には "Edg/" が含まれる（Chromium 系で "Chrome/" も同時に含むため
@@ -993,6 +1032,8 @@ body {
     //   要素IDが TEXT キーと一致するため applyLang の汎用ループが設定する）。
     set('edgeDevModeLabel', t.edgeDevMode);
     set('edgeDevOptsLabel', t.edgeDevOptions);
+    var edgeUnpackIcon = document.getElementById('edgeUnpackIcon');
+    if (edgeUnpackIcon) edgeUnpackIcon.setAttribute('aria-label', t.edgeUnpackAria);
 
     // 手順文（①デベロッパーモード / ②読み込む）をブラウザ別に出し分け
     set('s2b1', isEdge ? t.s2b1Edge : t.s2b1Chrome);
@@ -1008,6 +1049,14 @@ body {
       if (el) el.textContent = t[ids[i]];
     }
     document.documentElement.lang = lang;
+    document.title = t.pageTitle;
+    var returnLink = document.getElementById('returnLink');
+    if (returnLink) {
+      returnLink.setAttribute('aria-label', t.returnAria);
+      returnLink.href = '../?lang=' + encodeURIComponent(lang);
+    }
+    var langButton = document.getElementById('langBtn');
+    if (langButton) langButton.textContent = (lang === primaryLang ? alternateLang : primaryLang).toUpperCase();
 
     // パス表示は別途処理
     var pathEl = document.getElementById('extPath');
@@ -1023,7 +1072,7 @@ body {
   }
 
   window.toggleLang = function () {
-    lang = lang === 'ja' ? 'en' : 'ja';
+    lang = lang === primaryLang ? alternateLang : primaryLang;
     applyLang();
   };
 

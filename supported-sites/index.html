@@ -3,35 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="DL-Merge-Inの対応サービスの例と、ご利用にあたっての注意事項です。" />
-    <title>対応サービスの例 | DL-Merge-In</title>
-    <link rel="stylesheet" href="../style.css" />
+    <meta name="description" data-i18n-content="supportMetaDescription" content="DL名人の対応サービスの例と、ご利用にあたっての注意事項です。" />
+    <title>対応サービスの例 | DL名人</title>
+    <link rel="stylesheet" href="../style.css?v=20260823-2" />
   </head>
-  <body>
+  <body data-i18n-page="support">
     <header class="site-header info-header">
-      <a class="brand" href="../" aria-label="DL-Merge-In ホーム"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>DL-Merge-In</span></a>
-      <a class="text-link" href="../">紹介ページへ戻る <span>←</span></a>
+      <a class="brand" href="../" data-i18n-aria-label="home"><img class="brand-mark" src="../assets/brand-icon.png" alt="" /><span data-i18n="brand">DL名人</span></a>
+      <a class="text-link" href="../"><span data-i18n="back">紹介ページへ戻る</span> <span>←</span></a>
     </header>
     <main class="info-page section">
-      <p class="eyebrow"><span></span> SERVICE EXAMPLES</p>
-      <h1>対応サービスの<br /><em>例と注意事項</em></h1>
-      <p class="info-lead">対応状況はページ構成、配信方式、地域、外部サービス側の変更によって変わります。</p>
-      <section>
-        <h2>対応サービスの例</h2>
-        <p>個別対応と汎用検出により、動画・音声の保存候補を探します。現在の例として、YouTube、ニコニコ、TVer、Abema、Twitch、Vimeo、TikTok、X、Instagramなどがあります。</p>
-        <p>yt-dlpに対応する多数のサービスに加え、対象外のページでも汎用検出が候補を見つける場合があります。一方で、すべてのページ、配信方式、コンテンツでの動作を保証するものではありません。</p>
+      <p class="eyebrow"><span></span> <span data-i18n="supportKicker">対応サービス例</span></p>
+      <h1 data-i18n-html="supportTitle">対応サービスの<br /><em>例と注意事項</em></h1>
+      <p class="info-lead" data-i18n="supportLead">デスクトップ版とChromeウェブストア版（CWS版）では、対応範囲が異なります。対応状況はページ構成、配信方式、地域、外部サービス側の変更によっても変わります。</p>
+      <section id="edition-differences">
+        <h2 data-i18n="editionDifferenceTitle">デスクトップ版とCWS版の違い</h2>
+        <div class="support-edition-grid">
+          <article>
+            <p class="edition-label">WINDOWS DESKTOP</p>
+            <h3 data-i18n="desktopEditionTitle">デスクトップ版</h3>
+            <p data-i18n-html="desktopEditionBody">Setup.exeで導入し、ローカル処理サーバーと連携するフル版です。<strong>YouTubeのダウンロードに対応</strong>しています。</p>
+          </article>
+          <article>
+            <p class="edition-label">CHROME WEB STORE</p>
+            <h3 data-i18n="cwsEditionTitle">CWS版</h3>
+            <p data-i18n-html="cwsEditionBody">Chromeウェブストア向けのクライアント単体版です。現在は公開に向けて準備・審査中です。ストアの方針に合わせ、<strong>YouTubeを含む一部サイトは対象外</strong>です。</p>
+          </article>
+        </div>
       </section>
       <section>
-        <h2>機能上の補足</h2>
-        <p>画質・形式・コーデックの選択、動画と音声の結合、キュー管理、一時停止・再開、速度制限に対応しています。YouTubeの字幕は、利用可能な場合に別ファイルとして保存できます。</p>
-        <p>DRMで保護されたコンテンツは対象外です。保存できるかどうかは、対象ページの配信方式や権利設定によって異なります。</p>
+        <h2 data-i18n="desktopExamplesTitle">デスクトップ版の対応例</h2>
+        <p data-i18n="desktopExamplesBody1">個別対応と汎用検出により、動画・音声の保存候補を探します。現在の例として、YouTube、ニコニコ、TVer、Abema、Twitch、Vimeo、TikTok、X、Instagramなどがあります。</p>
+        <p data-i18n="desktopExamplesBody2">yt-dlpに対応する多数のサービスに加え、yt-dlpがサイトとして対応していないページでも、独自の汎用検出が候補を見つける場合があります。</p>
       </section>
       <section>
-        <h2>商標・利用上の注意</h2>
-        <p>ここに挙げたサービス名は、対応状況を説明するための例示です。各名称および商標はそれぞれの権利者に帰属します。DL-Merge-Inは各サービスと提携・承認・推奨関係にあるものではありません。</p>
-        <p>コンテンツの保存・利用にあたっては、各サービスの利用規約、コンテンツ提供者の条件、適用法令を確認してください。詳しくは<a href="../legal/">利用条件・免責・プライバシー</a>をご確認ください。</p>
+        <h2 data-i18n="cwsExamplesTitle">CWS版の対応例</h2>
+        <p data-i18n="cwsExamplesBody1">ニコニコ、TikTok、Instagram、X、Redditなどが対応例です。一方、YouTube、TVer、Abema、Twitch、VimeoなどはCWS版の対象外です。これらを利用する場合はデスクトップ版をご検討ください。</p>
+        <p data-i18n="cwsExamplesBody2">CWS版は現在、公開に向けて準備・審査中です。ストアでの公開後も、CWS版とデスクトップ版は同じ対応範囲にはなりません。どちらの版でも、すべてのページ、配信方式、コンテンツでの動作を保証するものではありません。</p>
+      </section>
+      <section>
+        <h2 data-i18n="featureNotesTitle">機能上の補足</h2>
+        <p data-i18n="featureNotesBody1">画質・形式・コーデックの選択、動画と音声の結合、キュー管理、一時停止・再開、速度制限に対応しています。YouTubeの字幕は、利用可能な場合に別ファイルとして保存できます。</p>
+        <p data-i18n="featureNotesBody2">DRMで保護されたコンテンツは対象外です。保存できるかどうかは、対象ページの配信方式や権利設定によって異なります。</p>
+      </section>
+      <section>
+        <h2 data-i18n="trademarkTitle">商標・利用上の注意</h2>
+        <p data-i18n="trademarkBody1">ここに挙げたサービス名は、対応状況を説明するための例示です。各名称および商標はそれぞれの権利者に帰属します。DL-Merge-Inは各サービスと提携・承認・推奨関係にあるものではありません。</p>
+        <p data-i18n-html="trademarkBody2">コンテンツの保存・利用にあたっては、各サービスの利用規約、コンテンツ提供者の条件、適用法令を確認してください。詳しくは<a href="../legal/">利用条件・免責・プライバシー</a>をご確認ください。</p>
       </section>
     </main>
-    <footer><a class="brand" href="../"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>DL-Merge-In</span></a><p>© 2026 DL-Merge-In</p><p><a href="../legal/">利用条件・免責・プライバシー</a></p></footer>
+    <footer><a class="brand" href="../"><img class="brand-mark" src="../assets/brand-icon.png" alt="" /><span data-i18n="brand">DL名人</span></a><p data-i18n="copyright">© 2026 DL名人</p><p><a href="../legal/" data-i18n="legal">利用条件・免責・プライバシー</a></p></footer>
+  <script src="../translations.js?v=20260823-2"></script>
+  <script src="../i18n.js?v=20260823-2"></script>
   </body>
 </html>
