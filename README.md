@@ -22,6 +22,7 @@
 ├─ download/index.html # インストーラーとSHA-256の確認ページ
 ├─ guide/index.html    # ブラウザ拡張の手動読み込みを含むセットアップガイド
 ├─ legal/index.html    # 利用条件・免責・プライバシー
+├─ licenses/index.html # OSSコンポーネント、ライセンス、公式ソースへの導線
 ├─ supported-sites/    # 対応サービスの例と注意事項
 └─ CNAME               # GitHub Pagesの独自ドメイン設定
 ```
@@ -30,8 +31,9 @@
 
 1. 本リポジトリを取得し、LP、ガイド、または画像を編集します。
 2. 内容をローカルで確認します。
-3. `main` ブランチへコミット・pushします。
-4. GitHub Pagesのビルド完了後、公開サイトで表示、リンク、画像を確認します。
+3. `node scripts/test-site-licenses.mjs` を実行し、OSS表示と全ページの導線を確認します。
+4. `main` ブランチへコミット・pushします。
+5. GitHub Pagesのビルド完了後、公開サイトで表示、リンク、画像を確認します。
 
 `CNAME` には `www.dlmergein.com` が設定されています。独自ドメインの接続を維持するため、通常のLP更新ではこのファイルを削除・変更しないでください。
 
@@ -63,7 +65,7 @@ Windows向けインストーラーとSHA-256は、このリポジトリではな
 
 ## 法的な案内
 
-[利用条件・免責・プライバシー](https://www.dlmergein.com/legal/) と [対応サービスの例](https://www.dlmergein.com/supported-sites/) は、LPの公開内容と矛盾しないよう同時に更新してください。前者には権利・規約・DRM・プライバシーの案内、後者には平文のサービス例と非提携表記を置きます。
+[利用条件・免責・プライバシー](https://www.dlmergein.com/legal/)、[オープンソースライセンス](https://www.dlmergein.com/licenses/)、[対応サービスの例](https://www.dlmergein.com/supported-sites/) は、LPの公開内容と矛盾しないよう同時に更新してください。正式ReleaseのOSS台帳とWebサイトのバージョン・コンポーネントが一致することも確認します。
 
 ## 問い合わせ・外部貢献
 
