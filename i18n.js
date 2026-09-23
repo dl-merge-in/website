@@ -185,30 +185,36 @@
     if (copy[localeName] && bundle?.site) Object.assign(copy[localeName], bundle.site);
   });
 
-  const release124Copy = {
-  "en": "Added open-source license notices and full texts. Removed obsolete Pro subscription status and activation UI. The default 5 MB/s limit remains unchanged.",
-  "ja": "OSSのライセンス表示と全文への導線を追加しました。予定のないProサブスクリプションの状態表示と認証UIを削除しました。既定の5 MB/s制限は変更していません。",
-  "es": "Se añadieron avisos y textos completos de licencias de código abierto. Se eliminó la interfaz obsoleta de suscripción Pro. Se mantiene el límite predeterminado de 5 MB/s.",
-  "pt-BR": "Adicionados avisos e textos completos de licenças de código aberto. Removida a interface obsoleta de assinatura Pro. O limite padrão de 5 MB/s permanece.",
-  "de": "Open-Source-Lizenzhinweise und vollständige Lizenztexte hinzugefügt. Die veraltete Pro-Abonnementanzeige wurde entfernt. Das Standardlimit von 5 MB/s bleibt bestehen.",
-  "fr": "Ajout des mentions et textes complets des licences open source. Suppression de l’interface obsolète d’abonnement Pro. La limite par défaut de 5 MB/s est conservée.",
-  "it": "Aggiunti avvisi e testi completi delle licenze open source. Rimossa l’interfaccia obsoleta dell’abbonamento Pro. Il limite predefinito di 5 MB/s resta invariato.",
-  "id": "Menambahkan pemberitahuan dan teks lengkap lisensi sumber terbuka. Menghapus antarmuka langganan Pro yang tidak digunakan. Batas bawaan 5 MB/s tetap berlaku.",
-  "ko": "오픈 소스 라이선스 안내와 전문을 추가했습니다. 사용하지 않는 Pro 구독 표시와 인증 UI를 삭제했습니다. 기본 5 MB/s 제한은 유지됩니다.",
-  "zh-CN": "新增开源许可证声明及完整文本。移除了不再使用的 Pro 订阅状态和激活界面。默认 5 MB/s 限制保持不变。",
-  "zh-TW": "新增開放原始碼授權聲明及完整條款。移除了不再使用的 Pro 訂閱狀態和啟用介面。預設 5 MB/s 限制維持不變。"
-};
-  Object.entries(copy).forEach(([language, values]) => {
-    for (const key of ['ctaButton','ctaMeta','downloadMetaDescription','unsignedBody2']) {
-      if (values[key]) values[key] = values[key].replaceAll('1.2.3', '1.2.4');
+  const releaseCopy = {
+    en: {
+      downloadMetaDescription: "Review the Windows desktop edition v1.2.15 installer, SHA-256, and unsigned-release notice before downloading DL-Merge-In.",
+      downloadUpgradeNote: "Use this Setup.exe for a new installation. Existing update-capable Desktop installations can receive the signed update in the app.",
+      unsignedBody2: "If a warning appears, verify the download source, file name, version, and SHA-256 before proceeding. If anything does not match or you are unsure, do not run the file. Recheck the <a href=\"https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.15\">Release page</a> and this page.",
+      releaseOverviewLabel: "Overview", releaseChangesLabel: "Changes", releaseNotesLabel: "Notes", releaseLink: "Open GitHub Release",
+      release15Title: "v1.2.15", release15Date: "Released September 20, 2026 (JST)", release15Overview: "Improves recovery of server state and detected-media context during updates, and adds a yt-dlp browser-impersonation path for Surrit HLS media that reports a Cloudflare challenge.", release15Change1: "Prevents a temporary server stop during an update from exposing a manual server-start action; the healthy server state returns automatically after reconnection.", release15Change2: "Adds the yt-dlp browser-impersonation path for Surrit HLS media that reports a Cloudflare challenge.", release15Change3: "Preserves a late-arriving source-page URL for a detected media URL without replacing a known source frame.", release15Change4: "Includes the immediate update spinner, duplicate-action prevention, and continuous update-phase progress introduced in v1.2.14.", release15Notes: "Use Setup.exe for a new installation. Existing Desktop installations can receive the signed update in the app. The installer is not Authenticode-signed and update manifests are Ed25519-signed. The final-artifact Microsoft Defender gate was not run.",
+      release14Title: "v1.2.14", release14Date: "Released September 20, 2026 (JST)", release14Overview: "Improves Windows native-messaging reliability, update recovery, and update feedback.", release14Change1: "Improved Windows native-messaging reliability and update recovery.", release14Change2: "Simplified update notifications with immediate spinner feedback, duplicate-action prevention, and continuous phase progress.", release14Change3: "Improved completion notifications and reduced unnecessary setup-page displays after updating.", release14Notes: "A server-start button can appear during the temporary server shutdown; let the update finish without pressing it. The server returns automatically. This display issue is addressed in v1.2.15. The installer is not Authenticode-signed.",
+      release124Title: "v1.2.4", release124Date: "Released September 10, 2026 (JST)", release124Overview: "Adds open-source license notices and release assets, and removes obsolete Pro UI from the download manager.", release124Change1: "Added offline open-source license notices and full texts, available from Settings and the Start Menu.", release124Change2: "Added a component inventory and separate production-install and full-lock SPDX inventories as release assets.", release124Change3: "Removed obsolete Pro subscription status and activation UI from the download manager. The default 5 MB/s limit remains unchanged.", release124Notes: "For a new installation, manually load the extension following the setup guide. The installer is not Authenticode-signed and update manifests are Ed25519-signed.",
+      release123Title: "v1.2.3", release123Date: "Released September 6, 2026", release123Overview: "Adds signed in-app updates to the Windows desktop edition.", release123Change1: "Automatically checks for new formal releases and displays an Update button in the side panel and Download Manager.", release123Change2: "Downloads, verifies, and applies signed file-level deltas with in-app progress; no update installer is launched.", release123Change3: "Adds rollback on update failure and instructions to reload Chrome or Edge extensions when needed.", release123Notes: "Run Setup.exe once only when moving from v1.1.0. The installer is unsigned.",
+      release110Title: "v1.1.0", release110Date: "Released August 23, 2026", release110Overview: "Distribution release for the Windows desktop edition.", release110Change1: "Chrome is supported by default, with Microsoft Edge available when selected during setup.", release110Notes: "After setup, load the browser extension manually once. The installer is unsigned, and Deno, FFmpeg, and yt-dlp may be downloaded during first use."
+    },
+    ja: {
+      downloadMetaDescription: "DL名人 Windowsデスクトップ版 v1.2.15 のダウンロード前の確認事項です。",
+      downloadUpgradeNote: "新規インストールにはこのSetup.exeを使用してください。既存の更新対応デスクトップ版は、アプリ内の「更新」から署名済みの更新を受け取れます。",
+      unsignedBody2: "警告が表示された場合は、先に進む前にダウンロード元、ファイル名、バージョン、SHA-256を確認してください。確認できない場合や少しでも不安がある場合は、実行せずに<a href=\"https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.15\">Releaseページ</a>と本ページの情報を再確認してください。",
+      releaseOverviewLabel: "概要", releaseChangesLabel: "変更内容", releaseNotesLabel: "注意事項", releaseLink: "GitHub Releaseを開く",
+      release15Title: "v1.2.15", release15Date: "2026年9月20日公開（JST）", release15Overview: "更新中のサーバー状態と検出情報の復元性を改善し、Surrit HLSメディアのCloudflareチャレンジへの対応経路を追加しました。", release15Change1: "更新中の一時的なサーバー停止で手動のサーバー起動操作が表示されないようにし、再接続後は正常なサーバー状態へ自動復帰します。", release15Change2: "Cloudflareチャレンジを報告するSurrit HLSメディア向けに、yt-dlpのブラウザ偽装経路を追加しました。", release15Change3: "検出済みメディアURLへ遅れて届くソースページURLを保持し、既知のソースフレームを置き換えないようにしました。", release15Change4: "v1.2.14で導入した即時スピナー、二重操作防止、更新フェーズの連続進捗表示を含みます。", release15Notes: "新規導入にはSetup.exeを使用します。既存のデスクトップ版はアプリ内の署名済み更新を受け取れます。インストーラーはAuthenticode未署名、更新マニフェストはEd25519署名です。最終成果物に対するMicrosoft Defenderゲートは実施されていません。",
+      release14Title: "v1.2.14", release14Date: "2026年9月20日公開（JST）", release14Overview: "Windows Native Messagingの信頼性、更新復旧、更新中の操作フィードバックを改善しました。", release14Change1: "Windows Native Messagingの信頼性と更新復旧を改善しました。", release14Change2: "即時スピナー、二重操作防止、更新フェーズの連続進捗表示で更新通知を簡素化しました。", release14Change3: "完了通知を改善し、更新後に不要なセットアップページが表示される頻度を減らしました。", release14Notes: "更新中の一時的なサーバー停止ではサーバー起動ボタンが表示される場合がありますが、押さずに更新完了を待ってください。サーバーは自動復帰します。この表示上の問題はv1.2.15で対処済みです。インストーラーはAuthenticode未署名です。",
+      release124Title: "v1.2.4", release124Date: "2026年9月10日公開（JST）", release124Overview: "オープンソースのライセンス表示と配布資材を整備し、ダウンロードマネージャーの不要なPro表示を削除しました。", release124Change1: "設定とスタートメニューから確認できる、オフラインのOSSライセンス通知と全文を追加しました。", release124Change2: "コンポーネント一覧と、実配布用・全lockfile用のSPDX一覧をRelease資材として追加しました。", release124Change3: "ダウンロードマネージャーから、廃止済みのProサブスクリプション状態・認証UIを削除しました。既定の5 MB/s制限は変更していません。", release124Notes: "新規導入ではセットアップガイドに従い、拡張機能を手動で読み込みます。インストーラーはAuthenticode未署名で、更新マニフェストはEd25519署名です。",
+      release123Title: "v1.2.3", release123Date: "2026年9月6日公開", release123Overview: "Windowsデスクトップ版に、署名付きのアプリ内アップデート機能を追加しました。", release123Change1: "新しい正式版を自動確認し、サイドパネルとDownload Managerに「更新」ボタンを表示します。", release123Change2: "更新では署名済みの差分ファイルを取得・検証・適用し、進捗をアプリ内に表示します。更新用インストーラーは起動しません。", release123Change3: "更新失敗時に旧ファイルへ戻す復旧処理と、Chrome・Edgeの拡張機能再読み込み案内を追加しました。", release123Notes: "v1.1.0から移行する場合だけSetup.exeを一度実行します。インストーラーは未署名です。",
+      release110Title: "v1.1.0", release110Date: "2026年8月23日公開", release110Overview: "Windows向けデスクトップ版の配布リリースです。", release110Change1: "Chromeを標準対応とし、セットアップ時の選択でMicrosoft Edgeにも対応します。", release110Notes: "セットアップ後は拡張機能を一度手動で読み込みます。インストーラーは未署名で、初回利用時にDeno、FFmpeg、yt-dlpを取得する場合があります。"
     }
-    if (values.downloadUpgradeNote) values.downloadUpgradeNote = values.downloadUpgradeNote.replace('1.2.3','1.2.4');
-    values.changelog124Title = 'v1.2.4';
-    values.changelog124Date = '2026-09-10';
-    values.changelog124Body = release124Copy[language] || release124Copy.en;
-  });
+  };
+  Object.assign(copy.en, releaseCopy.en);
+  Object.assign(copy.ja, releaseCopy.ja);
 
-  const locale = localeFromBrowser();
+  const page = document.body?.dataset?.i18nPage;
+  const browserLocale = localeFromBrowser();
+  const locale = page === "home" ? browserLocale : browserLocale === "ja" ? "ja" : "en";
   const t = copy[locale] || copy.en;
   document.documentElement.lang = locale;
   document.documentElement.dataset.locale = locale;

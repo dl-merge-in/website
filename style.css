@@ -25,3 +25,7 @@ body{overflow-x:hidden}
 .hero-actions{flex-wrap:wrap}
 .button{max-width:100%;white-space:normal;text-align:center;justify-content:center}
 .button>[data-i18n],.text-link>[data-i18n]{font-size:inherit;line-height:inherit}
+.release-entry h3{margin:22px 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.release-entry .release-date{color:var(--ink);font-weight:700}
+.release-entry ul{margin:8px 0;padding-left:20px;color:var(--muted);font-size:13px;line-height:2}
+.release-entry li+li{margin-top:4px}

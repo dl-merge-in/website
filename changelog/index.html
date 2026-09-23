@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" data-i18n-content="changelogMetaDescription" content="DL-Merge-Inの公開バージョン履歴とアップデート内容です。" />
     <title>変更履歴 | DL-Merge-In</title>
-    <link rel="stylesheet" href="../style.css?v=20260908-124" />
+    <link rel="stylesheet" href="../style.css?v=20260923-1" />
   </head>
   <body data-i18n-page="changelog">
     <header class="site-header info-header">
@@ -16,32 +16,81 @@
       <p class="eyebrow"><span></span> <span data-i18n="changelogKicker">リリース履歴</span></p>
       <h1 data-i18n="changelogTitle">変更履歴</h1>
       <p class="info-lead" data-i18n="changelogLead">DL-Merge-Inのアップデートで配信する各バージョンの内容を掲載します。</p>
-      <section>
-        <h2 data-i18n="changelog124Title">v1.2.4</h2>
-        <p data-i18n="changelog124Date">2026-09-10</p>
-        <p data-i18n="changelog124Body">OSSのライセンス表示と全文への導線を追加しました。予定のないProサブスクリプションの状態表示と認証UIを削除しました。既定の5 MB/s制限は変更していません。</p>
+      <section class="release-entry">
+        <h2 data-i18n="release15Title">v1.2.15</h2>
+        <p class="release-date" data-i18n="release15Date">2026年9月20日公開（JST）</p>
+        <h3 data-i18n="releaseOverviewLabel">概要</h3>
+        <p data-i18n="release15Overview">更新中のサーバー状態と検出情報の復元性を改善し、Surrit HLSメディアのCloudflareチャレンジへの対応経路を追加しました。</p>
+        <h3 data-i18n="releaseChangesLabel">変更内容</h3>
+        <ul>
+          <li data-i18n="release15Change1">更新中の一時的なサーバー停止で手動のサーバー起動操作が表示されないようにし、再接続後は正常なサーバー状態へ自動復帰します。</li>
+          <li data-i18n="release15Change2">Cloudflareチャレンジを報告するSurrit HLSメディア向けに、yt-dlpのブラウザ偽装経路を追加しました。</li>
+          <li data-i18n="release15Change3">検出済みメディアURLへ遅れて届くソースページURLを保持し、既知のソースフレームを置き換えないようにしました。</li>
+          <li data-i18n="release15Change4">v1.2.14で導入した即時スピナー、二重操作防止、更新フェーズの連続進捗表示を含みます。</li>
+        </ul>
+        <h3 data-i18n="releaseNotesLabel">注意事項</h3>
+        <p data-i18n="release15Notes">新規導入にはSetup.exeを使用します。既存のデスクトップ版はアプリ内の署名済み更新を受け取れます。インストーラーはAuthenticode未署名、更新マニフェストはEd25519署名です。最終成果物に対するMicrosoft Defenderゲートは実施されていません。</p>
+        <p><a class="text-link" href="https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.15"><span data-i18n="releaseLink">GitHub Releaseを開く</span> <span>↗</span></a></p>
       </section>
-      <section>
-        <h2 data-i18n="changelog123Title">バージョン 1.2.3</h2>
-        <p data-i18n="changelog123Date">2026年9月6日公開</p>
-        <p data-i18n="changelog123Summary">Windowsデスクトップ版に、署名付きのアプリ内アップデート機能を追加しました。</p>
-        <p data-i18n="changelog123Body">新しい正式版を自動確認して「更新」ボタンを表示します。クリック後は「今すぐ更新」「後で更新」「変更内容」を選択でき、差分ファイルの取得・検証・適用と進捗表示をアプリ内で行います。必要な場合はChromeまたはEdgeの拡張機能を再読み込みする手順を案内し、更新途中の失敗時は旧ファイルへ復旧します。バージョン1.1.0から移行するときだけ、v1.2.3のセットアップを一度実行してください。</p>
+      <section class="release-entry">
+        <h2 data-i18n="release14Title">v1.2.14</h2>
+        <p class="release-date" data-i18n="release14Date">2026年9月20日公開（JST）</p>
+        <h3 data-i18n="releaseOverviewLabel">概要</h3>
+        <p data-i18n="release14Overview">Windows Native Messagingの信頼性、更新復旧、更新中の操作フィードバックを改善しました。</p>
+        <h3 data-i18n="releaseChangesLabel">変更内容</h3>
+        <ul>
+          <li data-i18n="release14Change1">Windows Native Messagingの信頼性と更新復旧を改善しました。</li>
+          <li data-i18n="release14Change2">即時スピナー、二重操作防止、更新フェーズの連続進捗表示で更新通知を簡素化しました。</li>
+          <li data-i18n="release14Change3">完了通知を改善し、更新後に不要なセットアップページが表示される頻度を減らしました。</li>
+        </ul>
+        <h3 data-i18n="releaseNotesLabel">注意事項</h3>
+        <p data-i18n="release14Notes">更新中の一時的なサーバー停止ではサーバー起動ボタンが表示される場合がありますが、押さずに更新完了を待ってください。サーバーは自動復帰します。この表示上の問題はv1.2.15で対処済みです。インストーラーはAuthenticode未署名です。</p>
+        <p><a class="text-link" href="https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.14"><span data-i18n="releaseLink">GitHub Releaseを開く</span> <span>↗</span></a></p>
       </section>
-      <section>
-        <h2 data-i18n="changelog122Title">バージョン 1.2.2</h2>
-        <p data-i18n="changelog122Date">2026年9月6日公開終了</p>
-        <p data-i18n="changelog122Summary">ChromeとEdgeの連動更新試験に合格し、公開を終了したテスト専用バージョンです。</p>
-        <p data-i18n="changelog122Body">機能上の変更はありません。同時起動修正版のバージョン1.2.0から更新し、両ブラウザーへの反映とデータ保持を確認しました。このバージョンは再利用しません。</p>
+      <section class="release-entry">
+        <h2 data-i18n="release124Title">v1.2.4</h2>
+        <p class="release-date" data-i18n="release124Date">2026年9月10日公開（JST）</p>
+        <h3 data-i18n="releaseOverviewLabel">概要</h3>
+        <p data-i18n="release124Overview">オープンソースのライセンス表示と配布資材を整備し、ダウンロードマネージャーの不要なPro表示を削除しました。</p>
+        <h3 data-i18n="releaseChangesLabel">変更内容</h3>
+        <ul>
+          <li data-i18n="release124Change1">設定とスタートメニューから確認できる、オフラインのOSSライセンス通知と全文を追加しました。</li>
+          <li data-i18n="release124Change2">コンポーネント一覧と、実配布用・全lockfile用のSPDX一覧をRelease資材として追加しました。</li>
+          <li data-i18n="release124Change3">ダウンロードマネージャーから、廃止済みのProサブスクリプション状態・認証UIを削除しました。既定の5 MB/s制限は変更していません。</li>
+        </ul>
+        <h3 data-i18n="releaseNotesLabel">注意事項</h3>
+        <p data-i18n="release124Notes">新規導入ではセットアップガイドに従い、拡張機能を手動で読み込みます。インストーラーはAuthenticode未署名で、更新マニフェストはEd25519署名です。</p>
+        <p><a class="text-link" href="https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.4"><span data-i18n="releaseLink">GitHub Releaseを開く</span> <span>↗</span></a></p>
       </section>
-      <section>
-        <h2 data-i18n="changelog121Title">バージョン 1.2.1</h2>
-        <p data-i18n="changelog121Date">2026年9月6日公開終了</p>
-        <p data-i18n="changelog121Summary">第1回実機試験を中止し、公開を終了したテスト専用バージョンです。</p>
-        <p data-i18n="changelog121Body">ChromeとEdgeの同時起動問題を検出したため、Releaseを削除しました。このバージョンは再利用しません。</p>
+      <section class="release-entry">
+        <h2 data-i18n="release123Title">v1.2.3</h2>
+        <p class="release-date" data-i18n="release123Date">2026年9月6日公開</p>
+        <h3 data-i18n="releaseOverviewLabel">概要</h3>
+        <p data-i18n="release123Overview">Windowsデスクトップ版に、署名付きのアプリ内アップデート機能を追加しました。</p>
+        <h3 data-i18n="releaseChangesLabel">変更内容</h3>
+        <ul>
+          <li data-i18n="release123Change1">新しい正式版を自動確認し、サイドパネルとDownload Managerに「更新」ボタンを表示します。</li>
+          <li data-i18n="release123Change2">更新では署名済みの差分ファイルを取得・検証・適用し、進捗をアプリ内に表示します。更新用インストーラーは起動しません。</li>
+          <li data-i18n="release123Change3">更新失敗時に旧ファイルへ戻す復旧処理と、Chrome・Edgeの拡張機能再読み込み案内を追加しました。</li>
+        </ul>
+        <h3 data-i18n="releaseNotesLabel">注意事項</h3>
+        <p data-i18n="release123Notes">v1.1.0から移行する場合だけSetup.exeを一度実行します。インストーラーは未署名です。</p>
+        <p><a class="text-link" href="https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.3"><span data-i18n="releaseLink">GitHub Releaseを開く</span> <span>↗</span></a></p>
+      </section>
+      <section class="release-entry">
+        <h2 data-i18n="release110Title">v1.1.0</h2>
+        <p class="release-date" data-i18n="release110Date">2026年8月23日公開</p>
+        <h3 data-i18n="releaseOverviewLabel">概要</h3>
+        <p data-i18n="release110Overview">Windows向けデスクトップ版の配布リリースです。</p>
+        <h3 data-i18n="releaseChangesLabel">変更内容</h3>
+        <ul><li data-i18n="release110Change1">Chromeを標準対応とし、セットアップ時の選択でMicrosoft Edgeにも対応します。</li></ul>
+        <h3 data-i18n="releaseNotesLabel">注意事項</h3>
+        <p data-i18n="release110Notes">セットアップ後は拡張機能を一度手動で読み込みます。インストーラーは未署名で、初回利用時にDeno、FFmpeg、yt-dlpを取得する場合があります。</p>
+        <p><a class="text-link" href="https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.1.0"><span data-i18n="releaseLink">GitHub Releaseを開く</span> <span>↗</span></a></p>
       </section>
     </main>
     <footer><a class="brand" href="../"><img class="brand-mark" src="../assets/brand-icon.png" alt="" /><span data-i18n="brand">DL名人</span></a><p data-i18n="copyright">© 2026 DL名人</p><p><a href="../legal/" data-i18n="legal">利用条件・免責・プライバシー</a></p><p><a href="../licenses/" data-i18n="licensesNav">オープンソースライセンス</a></p></footer>
     <script src="../translations.js?v=20260906-1"></script>
-    <script src="../i18n.js?v=20260908-124"></script>
+    <script src="../i18n.js?v=20260921-1"></script>
   </body>
 </html>
