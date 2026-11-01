@@ -1,6 +1,6 @@
 # DL-Merge-In Third-Party Notices
 
-This file applies to DL-Merge-In 1.2.4. DL-Merge-In is proprietary software,
+This file applies to DL-Merge-In 1.2.18. DL-Merge-In is proprietary software,
 but the components below remain governed by their own licenses. Complete license
 texts are included offline with every distribution.
 
@@ -175,15 +175,15 @@ Deno-compiled executables: server/server.exe, native-host/launcher-host.exe, upd
 
 ## Programs downloaded separately at runtime
 
-### yt-dlp 2026.06.09
+### yt-dlp 2026.08.19
 
 - Distribution targets: desktop
 - Use: Downloaded separately from upstream and executed as a separate program
 - License: GPL-3.0-or-later
 - Copyright: Copyright the yt-dlp authors and contributors
-- Source: https://github.com/yt-dlp/yt-dlp/tree/2026.06.09
-- Upstream binary/release: https://github.com/yt-dlp/yt-dlp/releases/tag/2026.06.09
-- Expected SHA-256: 3a48cb955d55c8821b60ccbdbbc6f61bc958f2f3d3b7ad5eaf3d83a543293a27
+- Source: https://github.com/yt-dlp/yt-dlp/tree/2026.08.19
+- Upstream binary/release: https://github.com/yt-dlp/yt-dlp/releases/tag/2026.08.19
+- Expected SHA-256: 66674953fe251b89f4d08c5f0e35e0728679bd67ab3d7d05c0562af101dd3e7a
 - Included license text: licenses/texts/GPL-3.0-or-later.txt
 
 ### FFmpeg essentials build by Gyan Doshi 8.1.2
