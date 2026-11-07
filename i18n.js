@@ -30,7 +30,7 @@
     },
     ja: {
       brand: "DL名人", home: "DL名人 ホーム", navFeatures: "できること", navSupport: "対応範囲", navStart: "はじめ方", navFaq: "よくある質問", startFree: "無料で始める",
-      heroTitle: "ページを開く。選ぶ。<br><em>そのまま保存。</em>", heroText: "ブラウジング中のページを開くだけで、保存できる動画や音声をサイドパネルに一覧表示。好きな候補を選び、保存までブラウザから進められます。", downloadDesktop: "Windows デスクトップ版をダウンロード", viewStart: "はじめ方を見る", browserNote: "Windows / Chrome 標準対応　·　インストール時の選択で Edge にも対応",
+      heroTitle: "<span class='hero-phrase'>ページを開く。</span><span class='hero-phrase'>選ぶ。</span><br><em>そのまま保存。</em>", heroText: "ブラウジング中のページを開くだけで、保存できる動画や音声をサイドパネルに一覧表示。好きな候補を選び、保存までブラウザから進められます。", downloadDesktop: "Windows デスクトップ版をダウンロード", viewStart: "はじめ方を見る", browserNote: "Windows / Chrome 標準対応　·　インストール時の選択で Edge にも対応",
       quickTitle: "3ステップで始める。", quickLead: "インストール後にブラウザで拡張機能を一度だけ手動で読み込みます。準備ができれば、いつものブラウジングの流れで使えます。",
       featuresTitle: "ページを開けば、<br>保存できるものが見つかる。", featuresLead: "リンクを探して別のアプリへ貼り付ける必要はありません。表示された候補から、保存したい動画や音声を選ぶだけです。", detectTitle: "ページを開くだけで、<br>保存できるものを自動検出。", detectBody: "動画や音声があるページを開くと、保存できる候補をサイドパネルに一覧表示。幅広いページから自動で探します。", qualityTitle: "好きな画質と形式を、<br>選んで保存。", qualityBody: "保存する前に、画質とファイルの種類を選べます。", queueTitle: "複数ファイルの<br>同時ダウンロード", queueBody: "複数の保存はキューで整理。ピン留め、速度制限、一時停止・再開まで、まとめて管理できます。",
       galleryTitle: "ブラウジング中のページから自動検出", workflowTitle: "いつものブラウジングに、<br>保存の選択肢を。", casesTitle: "こんなときに、DL名人。", ctaTitle: "あなたのブラウジングに、<br><em>保存する自由を。</em>", ctaBody: "現行デスクトップ版は、無料・無制限・フル機能でお使いいただけます。", faqTitle: "よくある質問", legal: "利用条件・免責・プライバシー", footerDmr: "DRM保護コンテンツは対象外です。コンテンツの保存・利用は、各サービスの規約および適用される法令に従ってください。",
