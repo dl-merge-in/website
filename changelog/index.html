@@ -17,6 +17,21 @@
       <h1 data-i18n="changelogTitle">変更履歴</h1>
       <p class="info-lead" data-i18n="changelogLead">DL-Merge-Inのアップデートで配信する各バージョンの内容を掲載します。</p>
       <section class="release-entry">
+        <h2 data-i18n="release19Title">v1.2.19</h2>
+        <p class="release-date" data-i18n="release19Date">2026年11月9日公開（JST）</p>
+        <h3 data-i18n="releaseOverviewLabel">概要</h3>
+        <p data-i18n="release19Overview">設定から内部ストレージを管理できるようにし、削除や更新で残ったファイルの回収を改善しました。</p>
+        <h3 data-i18n="releaseChangesLabel">変更内容</h3>
+        <ul>
+          <li data-i18n="release19Change1">設定のストレージ管理ダッシュボードで、ダウンロード一覧にない内部ファイルを確認し、選んだファイルを個別に削除できます。</li>
+          <li data-i18n="release19Change2">内部ファイルの削除に失敗した場合は管理記録を残し、再起動後も再試行します。</li>
+          <li data-i18n="release19Change3">期限切れの更新認証セッションを自動で回収します。</li>
+        </ul>
+        <h3 data-i18n="releaseNotesLabel">注意事項</h3>
+        <p data-i18n="release19Notes">WindowsのChrome・Edge向けです。Setup.exeはAuthenticode未署名、更新マニフェストはEd25519署名付きです。最終Native Hostは、除外・許可の上書きなしでMicrosoft Defender検証に合格しました。</p>
+        <p><a class="text-link" href="https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.19"><span data-i18n="releaseLink">GitHub Releaseを開く</span> <span>↗</span></a></p>
+      </section>
+      <section class="release-entry">
 <h2 data-i18n="release18Title">v1.2.18</h2>
 <p class="release-date" data-i18n="release18Date">2026年11月1日公開（JST）</p>
 <h3 data-i18n="releaseOverviewLabel">概要</h3>
@@ -104,6 +119,6 @@
     </main>
     <footer><a class="brand" href="../"><img class="brand-mark" src="../assets/brand-icon.png" alt="" /><span data-i18n="brand">DL名人</span></a><p data-i18n="copyright">© 2026 DL名人</p><p><a href="../legal/" data-i18n="legal">利用条件・免責・プライバシー</a></p><p><a href="../licenses/" data-i18n="licensesNav">オープンソースライセンス</a></p></footer>
     <script src="../translations.js?v=20260906-1"></script>
-    <script src="../i18n.js?v=20260921-1"></script>
+    <script src="../i18n.js?v=20261109-1"></script>
   <script src="../product-context.js"></script></body>
 </html>
