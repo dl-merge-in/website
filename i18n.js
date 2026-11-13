@@ -187,10 +187,16 @@
 
   const releaseCopy = {
     en: {
-      downloadMetaDescription: "Review the Windows desktop edition v1.2.19 installer, SHA-256, and unsigned-release notice before downloading DL-Merge-In.",
+      downloadMetaDescription: "Review the Windows desktop edition v1.2.20 installer, SHA-256, and unsigned-release notice before downloading DL-Merge-In.",
       downloadUpgradeNote: "Use this Setup.exe for a new installation. Existing update-capable Desktop installations can receive the signed update in the app.",
-      unsignedBody2: "If a warning appears, verify the download source, file name, version, and SHA-256 before proceeding. If anything does not match or you are unsure, do not run the file. Recheck the <a href=\"https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.19\">Release page</a> and this page.",
+      unsignedBody2: "If a warning appears, verify the download source, file name, version, and SHA-256 before proceeding. If anything does not match or you are unsure, do not run the file. Recheck the <a href=\"https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.20\">Release page</a> and this page.",
       releaseOverviewLabel: "Overview", releaseChangesLabel: "Changes", releaseNotesLabel: "Notes", releaseLink: "Open GitHub Release",
+      release20Title: "v1.2.20",
+      release20Date: "Released November 14, 2026 (JST)",
+      release20Overview: "Media details can load while downloads are in progress.",
+      release20Change1: "Media details can load while downloads from the same site are busy or queued.",
+      release20Change2: "Manual quality selection takes priority, and the extension backs off when a media provider asks it to wait.",
+      release20Notes: "For Chrome and Edge on Windows. Setup.exe is not Authenticode-signed. The update manifest is Ed25519-signed. The final Native Host passed Microsoft Defender checks without exclusions or allowed-threat overrides.",
       release19Title: "v1.2.19",
       release19Date: "Released November 9, 2026 (JST)",
       release19Overview: "Adds internal storage management in Settings and improves cleanup after deletion and update activity.",
@@ -205,10 +211,16 @@
       release110Title: "v1.1.0", release110Date: "2026年8月23日公開", release110Overview: "Windows向けデスクトップ版の配布リリースです。", release110Change1: "Chromeを標準対応とし、セットアップ時の選択でMicrosoft Edgeにも対応します。", release110Notes: "セットアップ後は拡張機能を一度手動で読み込みます。インストーラーは未署名で、初回利用時にDeno、FFmpeg、yt-dlpを取得する場合があります。"
     },
     ja: {
-      downloadMetaDescription: "DL名人 Windowsデスクトップ版 v1.2.19 のダウンロード前の確認事項です。",
+      downloadMetaDescription: "DL名人 Windowsデスクトップ版 v1.2.20 のダウンロード前の確認事項です。",
       downloadUpgradeNote: "新規インストールにはこのSetup.exeを使用してください。既存の更新対応デスクトップ版は、アプリ内の「更新」から署名済みの更新を受け取れます。",
-      unsignedBody2: "警告が表示された場合は、先に進む前にダウンロード元、ファイル名、バージョン、SHA-256を確認してください。確認できない場合や少しでも不安がある場合は、実行せずに<a href=\"https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.19\">Releaseページ</a>と本ページの情報を再確認してください。",
+      unsignedBody2: "警告が表示された場合は、先に進む前にダウンロード元、ファイル名、バージョン、SHA-256を確認してください。確認できない場合や少しでも不安がある場合は、実行せずに<a href=\"https://github.com/dl-merge-in/DL-Merge-In/releases/tag/v1.2.20\">Releaseページ</a>と本ページの情報を再確認してください。",
       releaseOverviewLabel: "概要", releaseChangesLabel: "変更内容", releaseNotesLabel: "注意事項", releaseLink: "GitHub Releaseを開く",
+      release20Title: "v1.2.20",
+      release20Date: "2026年11月14日公開（JST）",
+      release20Overview: "ダウンロード中でも、候補の動画情報を取得しやすくしました。",
+      release20Change1: "同じサイトのダウンロードが混み合っていても、候補の動画情報を取得できるようにしました。",
+      release20Change2: "手動の画質選択を優先し、配信元から待機を求められた場合は問い合わせを控えます。",
+      release20Notes: "WindowsのChrome・Edge向けです。Setup.exeはAuthenticode未署名、更新マニフェストはEd25519署名付きです。最終Native Hostは、除外・許可の上書きなしでMicrosoft Defender検証に合格しました。",
       release19Title: "v1.2.19",
       release19Date: "2026年11月9日公開（JST）",
       release19Overview: "設定から内部ストレージを管理できるようにし、削除や更新で残ったファイルの回収を改善しました。",
