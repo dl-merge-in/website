@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DL名人の使い方、設定タブの各項目、デスクトップ版とCWS版の更新手順を案内します。" data-help-content="description">
+  <title>DL名人 ヘルプ</title>
+  <link rel="stylesheet" href="../style.css?v=20260923-1">
+  <link rel="stylesheet" href="./help.css">
+  <script src="./help.js" defer></script>
+</head>
+<body class="help-page">
+  <a class="help-skip" href="#main" data-help="skip">本文へ移動</a>
+  <header class="help-header">
+    <div class="help-shell help-header-inner">
+      <a class="brand" href="../index.html"><img class="brand-mark" src="../assets/brand-icon.png" alt=""><span data-help="brand">DL名人</span></a>
+      <nav class="help-header-links" aria-label="関連ページ" data-help-aria="headerNav">
+        <a href="../index.html" data-help="home">製品サイト</a>
+        <a href="../guide/index.html" data-help="installGuide">インストールガイド</a>
+      </nav>
+      <nav class="help-languages" aria-label="ヘルプの表示言語" data-help-aria="languageNav">
+        <a href="?lang=ja" data-language="ja" hreflang="ja" lang="ja" aria-current="true">日本語</a>
+        <a href="?lang=en" data-language="en" hreflang="en" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="help-hero">
+      <div class="help-shell">
+        <p class="help-edition" data-help="edition">デスクトップ版・CWS版</p>
+        <h1 data-help="title">DL名人 ヘルプ</h1>
+        <p class="help-lead" data-help="lead">メディアの保存、用途に合う設定、アップデートの方法を案内します。</p>
+
+        <form class="help-search" role="search" aria-labelledby="search-label" data-help-search hidden>
+          <label id="search-label" for="help-query" data-help="searchLabel">ヘルプ内を検索</label>
+          <div class="help-search-field">
+            <input id="help-query" type="search" placeholder="例：保存先、画質、更新" data-help-placeholder="searchPlaceholder" aria-controls="search-results" autocomplete="off">
+            <button type="submit" data-help="searchButton">検索</button>
+          </div>
+          <div id="search-results" class="help-search-results" hidden>
+            <p role="status" data-help-search-status></p>
+            <ul data-help-search-links></ul>
+          </div>
+        </form>
+
+        <nav class="help-shortcuts" aria-label="よく使う案内" data-help-aria="shortcuts">
+          <a href="#workflow"><strong data-help="startShortcut">検出から保存まで</strong><span data-help="startHint">候補を選び、保存先を確認する</span></a>
+          <a href="#settings"><strong data-help="settingsShortcut">設定を調べる</strong><span data-help="settingsHint">各項目の初期値と使い分け</span></a>
+          <a href="#updates"><strong data-help="updatesShortcut">アップデートする</strong><span data-help="updatesHint">デスクトップ版・CWS版の手順</span></a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="help-shell help-layout">
+      <nav class="help-toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" data-help="toc">このページの目次</h2>
+        <ul>
+          <li><a href="#workflow" data-help="workflow">基本の使い方</a></li>
+          <li><a href="#download-manager" data-help="manager">ダウンロードマネージャー</a></li>
+          <li><a href="#recommended" data-help="recommended">目的別の設定例</a></li>
+          <li><a href="#settings" data-help="settings">設定リファレンス</a></li>
+          <li><a href="#updates" data-help="updates">更新方法</a></li>
+          <li><a href="#troubleshooting" data-help="troubleshooting">困ったとき</a></li>
+        </ul>
+      </nav>
+
+      <div class="help-content">
+        <section class="help-section" id="workflow" data-topic data-keywords="detect save folder 保存先 保存待ち ダウンロードマネージャー">
+          <h2 data-help="workflow">基本の使い方</h2>
+          <ol class="help-steps">
+            <li data-help="useStep1">保存する権利のあるメディアのページを開きます。拡張機能のサイドパネルを開き、「検出」タブで候補を確認します。候補が見つからないときは、ページ内のメディアを再生して表示を確認します。</li>
+            <li data-help="useStep2">候補のダウンロード操作を選びます。画質の選択画面が出た場合は、目的に合う画質を選びます。画質や字幕の候補は配信元によって異なります。</li>
+            <li data-help="useStep3">ダウンロードマネージャーで進捗を確認し、完了した項目の「ディスクへ保存」を選びます。「保存待ち」のファイルは、まだ指定のフォルダーに保存されていません。</li>
+          </ol>
+          <p data-help="saveBehavior">デスクトップ版では「すべてフォルダへ保存」で、保存対象の完了ファイルを選んだフォルダーにまとめて保存できます。CWS版では項目ごとに保存します。個別保存の場所は、保存ダイアログまたはブラウザーのダウンロード設定で確認できます。</p>
+          <p class="help-related"><a href="../supported-sites/index.html#edition-differences" data-help="supported">デスクトップ版とCWS版の対応範囲</a></p>
+        </section>
+
+        <section class="help-section" id="download-manager" data-topic data-keywords="download manager pause resume queue live clear completed ダウンロードマネージャー 一時停止 再開 キュー ライブ 保存済み">
+          <h2 data-help="manager">ダウンロードマネージャー</h2>
+          <p data-help="managerIntro">サイドパネルの「ダウンロードマネージャーを開く」から、待機中・取得中・完了した項目を確認できます。</p>
+          <ul class="help-steps">
+            <li data-help="managerQueue">待機中の項目はドラッグして順番を変更できます。操作できる項目では「一時停止」「再開」を使えます。</li>
+            <li data-help="managerLive">デスクトップ版で取得中のライブに「停止して保存」が表示された場合は、その操作で取得を終え、保存の準備を進めます。</li>
+            <li data-help="managerClear">「完了済みを消去」はディスクに保存済みの項目を一覧から整理します。保存待ちの項目は先に保存してください。</li>
+          </ul>
+        </section>
+
+        <section class="help-section" id="recommended" data-topic data-keywords="recommended defaults 初期値 推奨">
+          <h2 data-help="recommended">目的別の設定例</h2>
+          <dl class="help-recipes">
+            <div>
+              <dt data-help="recipeChoice">保存ごとに画質と容量を選びたい</dt>
+              <dd><span data-help="recipeChoiceBody">「常に最高画質を選択」をオフにし、候補が複数ある場合に選択画面で画質を決めます。</span> <a href="#quality" data-help="qualityLink">画質とコーデック</a></dd>
+            </div>
+            <div>
+              <dt data-help="recipePlayback">別の端末や編集ソフトでも再生したい</dt>
+              <dd><span data-help="recipePlaybackBody">デスクトップ版のYouTube保存では、「常に最高画質を選択」をオフにして「高互換（H.264 + AAC）」を選びます。</span> <a href="#codec" data-help="codecLink">コーデックの違い</a></dd>
+            </div>
+            <div>
+              <dt data-help="recipeNetwork">保存中もほかの通信に余裕を残したい</dt>
+              <dd><span data-help="recipeNetworkBody">まず既定の 5 MB/s とサイト別の制限を使い、通信が重いときは速度の上限を下げます。</span> <a href="#speed" data-help="speedLink">速度制限</a></dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="help-section" id="settings" aria-labelledby="settings-title">
+          <h2 id="settings-title" data-help="settings">設定リファレンス</h2>
+          <p class="help-section-lead" data-help="settingsLead">ブラウザーのサイドパネルで「設定」タブを開きます。表示される項目はエディションによって異なります。</p>
+          <nav class="help-setting-index" aria-label="設定項目へのリンク" data-help-aria="settingsNav">
+            <ul>
+              <li><a href="#version" data-help="version">現在のバージョン・配信元</a></li>
+              <li><a href="#storage" data-help="storage">ストレージ管理ダッシュボード</a></li>
+              <li><a href="#language" data-help="language">表示言語</a></li>
+              <li><a href="#file-filters" data-help="filters">ファイルフィルター</a></li>
+              <li><a href="#subtitles" data-help="subtitles">字幕</a></li>
+              <li><a href="#quality" data-help="quality">画質とコーデック</a></li>
+              <li><a href="#concurrency" data-help="downloadBehavior">ダウンロード動作</a></li>
+              <li><a href="#speed" data-help="speed">ダウンロード速度制限</a></li>
+              <li><a href="#blocked-domains" data-help="blocked">ブロック中のドメイン</a></li>
+              <li><a href="#local-server" data-help="server">ローカルサーバー・システムチェック</a></li>
+              <li><a href="#about" data-help="about">製品情報・オープンソースライセンス</a></li>
+            </ul>
+          </nav>
+
+          <article class="help-setting" id="version" data-topic data-keywords="current version 現在のバージョン 公開配信元">
+            <h3 data-help="version">現在のバージョン・配信元</h3>
+            <p data-help="versionBody">設定画面に拡張機能の現在のバージョンが表示されます。デスクトップ版で検証配信元の表示や配信元のエラーが出て、通常の配信に戻したい場合は「公開配信元に戻す」を選びます。</p>
+            <p class="help-related"><a href="#updates" data-help="updates">更新方法</a></p>
+          </article>
+
+          <article class="help-setting" id="storage" data-topic data-keywords="storage dashboard disk delete files 空き容量 ストレージ 管理 掃除 削除">
+            <h3 data-help="storage">ストレージ管理ダッシュボード</h3>
+            <p class="help-availability" data-help="desktopOnly">デスクトップ版</p>
+            <p data-help="storageBody">この項目がある場合は、別タブでダウンロード一覧にない内部ファイルと容量を確認できます。「内部ストレージを確認」で一覧を更新します。ブラウザーのプロファイルと、利用できる場合はデスクトップ版のWindows側の作業用出力が表示されます。</p>
+            <p class="help-notice" data-help="storageCaution">未保存のファイルが含まれる場合があります。必要なものは先にダウンロードマネージャーで保存し、不要と確認できたファイルだけを個別に削除してください。</p>
+          </article>
+
+          <article class="help-setting" id="language" data-topic data-keywords="language locale auto 表示言語 日本語 英語 自動">
+            <h3 data-help="language">表示言語</h3>
+            <p data-help="languageBody">サイドパネルなどの表示言語を、11言語または「自動（ブラウザの言語）」から選びます。デスクトップ版の初回起動時には、セットアップで選んだ言語が使われる場合があります。字幕の言語は別に指定できます。</p>
+            <p class="help-related"><a href="#subtitles" data-help="subtitleLink">字幕の優先言語</a></p>
+          </article>
+
+          <article class="help-setting" id="file-filters" data-topic data-keywords="file filter extension minimum size detection mp4 webm mp3 m4a m3u8 mpd ts 拡張子 サイズ 表示されない">
+            <h3 data-help="filters">ファイルフィルター</h3>
+            <p data-help="filtersBody">拡張子ごとに候補を表示するかを設定します。「有効」がオンの場合、サイズが分かる候補は「最小サイズ（KB）」以上のものが表示されます。サイズ不明の候補には最小サイズが適用されません。0 KBはサイズ制限なしです。</p>
+            <table class="help-table">
+              <caption data-help="filterDefaults">初期設定</caption>
+              <thead><tr><th scope="col" data-help="filterExtension">拡張子</th><th scope="col" data-help="filterMinimum">最小サイズ</th><th scope="col" data-help="filterEnabled">有効</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>.mp4</code>, <code>.webm</code></th><td>100 KB</td><td data-help="on">オン</td></tr>
+                <tr><th scope="row"><code>.mp3</code>, <code>.m4a</code></th><td>50 KB</td><td data-help="on">オン</td></tr>
+                <tr><th scope="row"><code>.m3u8</code>, <code>.mpd</code></th><td>0 KB</td><td data-help="on">オン</td></tr>
+                <tr><th scope="row"><code>.ts</code></th><td>0 KB</td><td data-help="off">オフ</td></tr>
+              </tbody>
+            </table>
+            <p data-help="filtersChange">ルールを増やすには「新しい拡張子」に flv などを入力し、「追加」を選びます。新しい行は有効・0 KBで作られます。候補を隠したい場合は「有効」をオフにします。「×」で行を削除すると、その拡張子に対するルールが解除されます。</p>
+          </article>
+
+          <article class="help-setting" id="subtitles" data-topic data-keywords="subtitles captions vtt language YouTube 字幕 自動 優先言語">
+            <h3 data-help="subtitles">字幕</h3>
+            <p class="help-availability" data-help="desktopOnly">デスクトップ版</p>
+            <ul>
+              <li><strong data-help="subtitleAuto">字幕を自動ダウンロード</strong> <span data-help="subtitleAutoBody">初期値はオフです。YouTubeで、希望言語の字幕が利用できる場合に取得します。</span></li>
+              <li><strong data-help="subtitleLanguage">字幕の優先言語</strong> <span data-help="subtitleLanguageBody">「自動」はブラウザーの言語を使います。決まった言語の字幕がほしい場合は、一覧からその言語を選びます。</span></li>
+            </ul>
+            <p data-help="subtitleCaveat">希望言語の字幕がない場合は動画だけが保存されることがあります。公開中のデスクトップ版では「字幕（PRO機能）」の欄で設定できます。</p>
+          </article>
+
+          <article class="help-setting" id="quality" data-topic data-keywords="auto highest resolution quality manual 画質 解像度 容量 最高画質">
+            <h3 data-help="quality">画質とコーデック</h3>
+            <h4 data-help="highest">常に最高画質を選択</h4>
+            <p data-help="highestBody">初期値はオフです。オンにすると、対応する候補では画質選択を省き、取得可能な最高画質を選びます。画質を手動で指定した場合は、その選択が優先されます。容量や対応端末を意識して毎回選びたい場合は、オフのままにします。</p>
+          </article>
+
+          <article class="help-setting" id="codec" data-topic data-keywords="youtube codec H.264 H264 AAC VP9 AV1 MP4 playback 再生 互換 画質">
+            <h3 data-help="codec">YouTube ダウンロードのコーデック</h3>
+            <p class="help-availability" data-help="desktopOnly">デスクトップ版</p>
+            <ul>
+              <li><strong data-help="codecCompatible">高互換（H.264 + AAC）</strong> <span data-help="codecCompatibleBody">初期値です。幅広い端末や編集ソフトとの互換性を重視する場合に向いています。</span></li>
+              <li><strong data-help="codecBest">最高画質優先（VP9/AV1可）</strong> <span data-help="codecBestBody">利用できる画質の選択肢を広げます。再生する端末やソフトが VP9・AV1 に対応するか確認してください。</span></li>
+            </ul>
+            <p data-help="codecCaveat">この設定はYouTubeの取得向けです。HLS配信には適用されません。最高画質の自動選択では、取得経路によって AV1 が優先される場合があります。</p>
+          </article>
+
+          <article class="help-setting" id="concurrency" data-topic data-keywords="stream concurrency source domain unlimited queue 同時 ストリーム数 一時停止 枠 サイト">
+            <h3 data-help="downloadBehavior">ダウンロード動作</h3>
+            <h4 data-help="concurrency">取得元サイト別のストリーム数を制限しない</h4>
+            <p data-help="concurrencyBody">初期値はオフで、同じサイトの取得ジョブは同時に3件までです。一時停止中のジョブも枠を保持します。オンにすると取得のサイト別制限が外れます。候補の情報を調べる軽量処理には、同じサイトで同時に3件までの制限が続きます。</p>
+            <p data-help="concurrencyTip">同じサイトから複数の取得を進めると、回線や配信元への負荷が増えます。迷ったら既定値のまま使ってください。</p>
+          </article>
+
+          <article class="help-setting" id="speed" data-topic data-keywords="speed download limit unlimited bandwidth mb/s 速度 制限 無制限 帯域">
+            <h3 data-help="speed">ダウンロード速度制限</h3>
+            <p data-help="speedBody">1本あたりの最大取得速度を MB/s（メガバイト毎秒）で設定します。初期値は 5 MB/s です。正の整数を入力するか、「無制限」にチェックを入れます。複数の取得が進むと、合計の通信量は1本分の上限より大きくなります。</p>
+            <p data-help="speedActive">実行中の取得に反映するときは、画面の状態表示を確認してください。ライブ、一時停止中、結合中、保存中の処理では反映が後になる場合があります。反映できなかったと表示されたら、デスクトップ版のサーバーが対応する版か確認します。</p>
+          </article>
+
+          <article class="help-setting" id="blocked-domains" data-topic data-keywords="block unblock domain hide site ブロック 解除 ドメイン 非表示">
+            <h3 data-help="blocked">ブロック中のドメイン</h3>
+            <p data-help="blockedBody">初期状態は空です。検出タブで候補の「Block Domain」を選ぶと、確認後にそのドメインの候補を非表示にします。再表示したい場合は、設定の一覧で対象ドメインの「ブロック解除」を選びます。</p>
+          </article>
+
+          <article class="help-setting" id="local-server" data-topic data-keywords="local server yt-dlp ffmpeg deno disconnected preflight ローカルサーバー 起動 システムチェック 接続">
+            <h3 data-help="server">ローカルサーバー・システムチェック</h3>
+            <p class="help-availability" data-help="desktopOnly">デスクトップ版</p>
+            <p data-help="serverBody">Windows側の処理を担当するローカルサーバーの接続状態とバージョンを確認できます。システムチェックが「注意」や「要対応」のときは、表示された項目と対処方法を確認してください。</p>
+            <p data-help="serverDisconnected">接続できない場合は、更新処理が進行中なら完了を待ちます。更新中でなければ、サイドパネルを開き直して接続状態を確認します。接続できない状態が続く場合は、表示されたエラーを控えてください。</p>
+          </article>
+
+          <article class="help-setting" id="about" data-topic data-keywords="about version yt-dlp FFmpeg Deno licenses oss オープンソース バージョン">
+            <h3 data-help="about">製品情報・オープンソースライセンス</h3>
+            <p data-help="aboutBody">設定画面の下部で拡張機能のバージョンを確認できます。デスクトップ版でサーバーに接続している場合は、yt-dlp、FFmpeg、Denoのバージョンも確認できます。「オープンソースライセンス」から、同梱ソフトウェアのライセンスをオフラインで読めます。</p>
+            <p class="help-related"><a href="../licenses/index.html" data-help="licenses">公開サイトのオープンソースライセンス</a></p>
+          </article>
+        </section>
+
+        <section class="help-section" id="updates" aria-labelledby="updates-title">
+          <h2 id="updates-title" data-help="updates">更新方法</h2>
+          <p data-help="updateEdition">WindowsのSetup.exeから導入した場合はデスクトップ版、Chrome ウェブストアから「DL Merge-In CWS」を追加した場合はCWS版の手順をご覧ください。</p>
+          <p class="help-related"><a href="#desktop-update" data-help="desktopUpdate">デスクトップ版をアプリ内で更新する</a> <a href="#cws-update" data-help="cwsUpdate">CWS版を更新する</a></p>
+          <article class="help-setting" id="desktop-update" data-topic data-keywords="desktop update upgrade check retry version restart 今すぐ更新 アップデート 更新 再試行">
+            <h3 data-help="desktopUpdate">デスクトップ版をアプリ内で更新する</h3>
+            <p data-help="desktopUpdateIntro">ブラウザー起動時などに新しい正式版を確認します。新しい版が見つかると、サイドパネル上部の「更新」から署名付きの差分更新を開始できます。</p>
+            <ol class="help-steps">
+              <li data-help="desktopUpdateStep1">サイドパネル上部の「更新」を1回押します。ダウンロードと検証が始まり、進み具合が表示されます。</li>
+              <li data-help="desktopUpdateStep2">待機中と表示されたら、進行中の取得・結合・保存を終えてください。名前の編集中で止まっている場合は、編集を保存するかキャンセルします。</li>
+              <li data-help="desktopUpdateStep3">適用から再起動まで待ち、「更新完了」を確認します。サイドパネルが閉じた場合は開き直し、設定画面に表示されるバージョンを確認します。</li>
+            </ol>
+            <p data-help="desktopUpdateTools">yt-dlp、FFmpeg、Denoの同梱版は、製品側で管理されています。利用中の版は「設定」の下部で確認できます。</p>
+            <p class="help-related"><a href="../changelog/index.html" data-help="desktopHistory">デスクトップ版の更新履歴</a></p>
+          </article>
+
+          <article class="help-setting" id="extension-reload" data-topic data-keywords="reload chrome edge extensions extension restart 拡張機能 再読み込み">
+            <h3 data-help="reload">再読み込みを求められたとき</h3>
+            <ol class="help-steps">
+              <li><span data-help="reloadStep1">使用中のブラウザーに対応するアドレスを、アドレスバーに貼り付けます。</span>
+                <ul class="help-addresses">
+                  <li>Chrome <code>chrome://extensions/</code></li>
+                  <li>Edge <code>edge://extensions/</code></li>
+                </ul>
+              </li>
+              <li data-help="reloadStep2">DL-Merge-Inのカードにある丸い矢印（再読み込み）を押します。権限の確認が出たら内容を確認し、有効にします。</li>
+              <li data-help="reloadStep3">サイドパネルを開き直して更新完了を確認します。両方のブラウザーで使っている場合は、再読み込みを案内されたブラウザーで行います。</li>
+            </ol>
+          </article>
+
+          <article class="help-setting" id="update-trouble" data-topic data-keywords="update no button failed retry rollback setup old version recovery アップデート 更新失敗 復旧 更新できない 再インストール">
+            <h3 data-help="updateTrouble">更新が出ない・失敗する</h3>
+            <ul>
+              <li data-help="updateAbsent">「更新」が出ない場合は、設定で現在のバージョンを確認し、更新履歴と照合します。新版がある場合は、ネット接続とローカルサーバーの状態を確認してからブラウザーを開き直します。</li>
+              <li data-help="updateRetry">「再試行」が表示された場合は、アプリの案内に沿って再試行します。「旧版を復元中」と表示されている間は処理の完了を待ちます。</li>
+              <li data-help="updateRecovery">「自動復旧に失敗しました」が続く場合は、拡張機能の削除やアプリのアンインストールをせず、表示されたメッセージを控えて不具合を報告してください。</li>
+              <li data-help="updateOld">アプリ内更新に対応していない初期版から移行する場合は、公式ダウンロードページのSetup.exeを使用し、インストールガイドに従ってください。実行する前に同ページのSHA-256と照合します。</li>
+            </ul>
+            <p class="help-related"><a href="../download/index.html" data-help="officialDownload">公式ダウンロード</a> <a href="../guide/index.html" data-help="installGuide">インストールガイド</a></p>
+          </article>
+
+          <article class="help-setting" id="cws-update" data-topic data-keywords="cws chrome web store store update extension アップデート 自動更新 ウェブストア">
+            <h3 data-help="cwsUpdate">CWS版を更新する</h3>
+            <p data-help="cwsUpdateBody">Chromeがウェブストアから自動で更新します。取得や保存を終えてからサイドパネルとダウンロードマネージャーを閉じて待ちます。</p>
+            <p><span data-help="cwsAddressIntro">アドレスバーに</span> <code>chrome://extensions/</code> <span data-help="cwsAddressAfter">を入力し、「DL Merge-In CWS」の詳細でバージョンを確認できます。</span></p>
+            <p data-help="cwsManual">手動で確認する場合は、同じ画面で「デベロッパー モード」をオンにして「更新」を押します。Chromeはインストール済みのストア拡張機能をまとめて確認します。</p>
+            <p class="help-related">
+              <a href="../cws/changelog/index.html" data-help="cwsHistory">CWS版の更新履歴</a>
+              <a href="https://chromewebstore.google.com/detail/dl-merge-in-cws/bjdjflglecphedijbhpplhnbfplangcg" data-help="cwsStore">Chrome ウェブストアの掲載情報</a>
+            </p>
+          </article>
+        </section>
+
+        <section class="help-section" id="troubleshooting" aria-labelledby="troubleshooting-title">
+          <h2 id="troubleshooting-title" data-help="troubleshooting">困ったとき</h2>
+          <article class="help-setting" id="missing-media" data-topic data-keywords="no results missing detect media 候補 ない 検出 されない DRM">
+            <h3 data-help="missing">メディアが候補に表示されない</h3>
+            <p data-help="missingBody">対象のページでメディアを再生してから検出タブを確認します。拡張子が無効になっていないか、最小サイズが大きすぎないか、ドメインをブロックしていないかも確認してください。対応状況は配信方式で異なり、DRM保護コンテンツは対象外です。</p>
+            <p class="help-related"><a href="#file-filters" data-help="filters">ファイルフィルター</a> <a href="#blocked-domains" data-help="blocked">ブロック中のドメイン</a></p>
+          </article>
+          <article class="help-setting" id="save-trouble" data-topic data-keywords="save folder pending download manager 保存できない 保存待ち 保存先">
+            <h3 data-help="saveTrouble">取得できたがファイルが見つからない</h3>
+            <p data-help="saveTroubleBody">ダウンロードマネージャーで該当項目の状態を確認します。「保存待ち」なら「ディスクへ保存」を押し、表示されたダイアログで場所を確認します。保存先の確認画面が出ない場合は、ブラウザーのダウンロード履歴または既定の保存先を確認してください。</p>
+          </article>
+          <article class="help-setting" id="report" data-topic data-keywords="help report issue contact support error 問い合わせ 不具合 連絡 エラー">
+            <h3 data-help="report">不具合を報告する</h3>
+            <p data-help="reportBody">製品の種類、アプリのバージョン、使用ブラウザー、再現手順、画面に出たエラーを添えると状況を確認しやすくなります。公開の報告先には個人情報、非公開URL、Cookie、アクセストークンを載せないでください。</p>
+            <p class="help-related"><a href="https://github.com/dl-merge-in/website/issues" data-help="issueLink">GitHubの不具合報告ページを開く</a></p>
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="help-shell help-footer">
+    <a href="../index.html" data-help="brand">DL名人</a>
+    <a href="../guide/index.html" data-help="installGuide">インストールガイド</a>
+    <a href="../licenses/index.html" data-i18n="licensesNav" data-help="footerLicenses">オープンソースライセンス</a>
+  </footer>
+</body>
+</html>

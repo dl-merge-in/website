@@ -22,6 +22,11 @@
   function init() {
     const locale = window.DLMERGEIN_LOCALE || 'en';
     const t = Object.fromEntries(keys.map((key, i) => [key, (rows[locale] || rows.en)[i]]));
+    Object.assign(t, locale === 'ja' ? {
+      installed: 'すでにインストール済みですか？', featureHelp: '機能・設定・更新のヘルプを開く'
+    } : {
+      installed: 'Already installed?', featureHelp: 'Get help with features, settings and updates'
+    });
     const old = base[locale] || base.en;
     document.querySelectorAll('[data-guide]').forEach(el => { el.textContent = t[el.dataset.guide]; });
     document.querySelectorAll('[data-guide-aria]').forEach(el => { el.setAttribute('aria-label', t[el.dataset.guideAria]); });

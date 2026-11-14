@@ -18,5 +18,14 @@
   const lang = requested || document.documentElement.lang || navigator.language;
   const locale = lang.startsWith('zh') ? (/tw|hk|hant/i.test(lang) ? 'zh-TW' : 'zh-CN') : lang.toLowerCase().startsWith('pt') ? 'pt-BR' : lang.split('-')[0];
   const t = copy[locale] || copy.en;
-  document.querySelectorAll('[data-map]').forEach(el => { const value = t[keys.indexOf(el.dataset.map)]; if(value) el.textContent = value; });
+  const helpLabels = {
+    ja: '機能ヘルプ', en: 'Product help', es: 'Ayuda del producto', 'pt-BR': 'Ajuda do produto',
+    de: 'Produkthilfe', fr: 'Aide produit', it: 'Guida alle funzioni', id: 'Bantuan produk',
+    ko: '제품 도움말', 'zh-CN': '产品帮助', 'zh-TW': '產品說明'
+  };
+  document.querySelectorAll('[data-map]').forEach(el => {
+    const key = el.dataset.map;
+    const value = key === 'help' ? (helpLabels[locale] || helpLabels.en) : t[keys.indexOf(key)];
+    if (value) el.textContent = value;
+  });
 })();
